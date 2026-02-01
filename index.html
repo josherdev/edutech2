@@ -103,6 +103,9 @@
             cursor: pointer; font-family: 'Fira Code'; font-size: 0.85rem;
             margin-top: 10px; margin-right: 10px; transition: 0.3s;
         }
+
+		.token { display: inline-block; padding: 4px 8px; margin: 2px; border-radius: 4px; background: rgba(0, 242, 255, 0.2); border: 1px solid var(--main-accent); color: var(--main-accent); font-family: 'Fira Code'; font-size: 0.9rem; }
+		
         .toggle-trigger:hover { background: var(--main-accent); color: #000; }
 
         .info-icon { 
@@ -174,13 +177,31 @@
                     <span class="mono" style="color: var(--main-accent)">CLASE 01</span>
                     <h3 style="margin: 10px 0;">El Despertar de las Máquinas</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">¿Qué es (y qué no es) la IA? Descubre la diferencia entre reglas fijas y patrones.</p>
-                    <button class="btn-action btn-main" onclick="showLesson(1)">Comenzar Clase</button>
+                    <button class="btn-action btn-main" onclick="showLesson(1)">Acceder</button>
                 </div>
                 <div class="class-card">
                     <span class="mono" style="color: var(--main-accent)">CLASE 02</span>
                     <h3 style="margin: 10px 0;">Pro vs. Master</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Diferencia entre la IA que cumple una sola función (Débil) y la IA que puede razonar (Fuerte).</p>
-                    <button class="btn-action btn-main" onclick="showLesson(2)">Comenzar Clase</button>
+                    <button class="btn-action btn-main" onclick="showLesson(2)">Acceder</button>
+                </div>
+				<div class="class-card">
+                    <span class="mono" style="color: var(--main-accent)">CLASE 03</span>
+                    <h3 style="margin: 10px 0;">Evaluación</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Aplicaciones prácticas y dinámicas de los contenidos vistos en las clases 1 y 2</p>
+                    <button class="btn-action btn-main" onclick="">Realizada</button>
+                </div>
+				<div class="class-card">
+                    <span class="mono" style="color: var(--main-accent)">CLASE 04</span>
+                    <h3 style="margin: 10px 0;">El detective de datos</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Comprende cómo las máquinas clasifican información con Machine Learning.</p>
+                    <button class="btn-action btn-main" onclick="showLesson(4)">Acceder</button>
+                </div>
+				<div class="class-card">
+                    <span class="mono" style="color: var(--main-accent)">CLASE 05</span>
+                    <h3 style="margin: 10px 0;">La máquina de predicción (NLP)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Entender porque la IA no "entiende" nuestro lenguaje.</p>
+                    <button class="btn-action btn-main" onclick="showLesson(5)">Acceder</button>
                 </div>
             </div>
         </div>
@@ -386,6 +407,122 @@
                     <p><strong>Idea Final:</strong> "Hoy vivimos rodeados de miles de IAs Débiles. Son como un ejército de hormigas especialistas trabajando para nosotros. La IA Fuerte es el sueño (o la pesadilla) del futuro".</p>
                     <p style="margin-top:15px; font-weight:bold;">Próxima Clase: En la clase 3 tendremos nuestra primera prueba.</p>
                 </div>
+            `,
+			4: `
+                <div class="lesson-header">
+                    <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_01</p>
+                    <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 4: El Detective de datos (Machine Learning)</h2>
+                    <p style="margin-top: 20px; font-size: 1.1rem;"><strong>Objetivo:</strong> Comprender cómo las máquinas clasifican información mediante el uso de "Atributos" y "Etiquetas", y cómo se entrenan para reconocer patrones.</p>
+                </div>
+
+                <h3 class="section-title">1. Dinámica de apertura: "Akinator humano"</h3>
+                <div class="comp-box">
+                    <p><strong>El Juego:</strong> Adivinar un objeto o personaje. El profe solo debe responder sí o no hasta que se acierte.</p>
+                </div>
+
+                <h3 class="section-title">2. Conceptos clave</h3>
+                <div class="comp-box" style="border-left: 5px solid var(--main-accent);">
+                    <p><strong>• Machine learning:</strong> Es el arte de enseñarle a una computadora a aprender de la experiencia, en lugar de darle una lista de instrucciones fijas.</p>
+                    <p><strong>• Atributos (Features):</strong> Son las características que usamos para describir algo (color, tamaño, peso, forma).</p>
+                    <p><strong>• Etiquetas (Labels):</strong> Es el "nombre" que la IA le asigna a un conjunto de atributos (ej. "Gato", "Spam", "Manzana").</p>
+                    <p><strong>• Árbol de decisión:</strong> Es un mapa que te guía a través de una serie de preguntas lógicas para llegar a una respuesta final. Es la forma en que una computadora "clasifica" las cosas o decide qué hacer.
+</p>
+                </div>
+
+                <h3 class="section-title">3. La diferencia clave: ¿Receta o Entrenamiento?</h3>
+                <div class="comp-box">
+                    <p>Imagina que quieres que una computadora reconozca si una fruta es una manzana o una naranja.</p>
+                    <div style="margin-top:15px;">
+                        <p><strong>1. Programación tradicional (La receta):</strong> Tú escribes reglas específicas. "Si es roja y redonda, es manzana. Si es naranja y rugosa, es naranja". El problema es que, si aparece una manzana verde, la computadora se confunde porque no estaba en tu "receta".
+</p>
+                        <p style="margin-top:10px;"><strong>2. Machine Learning (El entrenamiento):</strong> No le das reglas. Le das <strong>miles de fotos</strong> de manzanas y naranjas. La computadora analiza los pixeles, los colores y las formas por sí misma. Al final, ella sola descubre los patrones que diferencian a una de otra.
+</p>
+                    </div>
+                </div>
+
+                <h3 class="section-title">Actividad rápida: Objetos del salón</h3>
+                <div class="comp-box">
+                    <p>Analicemos un lápiz, un cuaderno y una mochila. ¿Qué atributos únicos permiten a una máquina diferenciarlos? Resaltar 3 atributos únicos.
+</p>
+                </div>
+
+                <h3 class="section-title">4. Práctica digital: Quick, Draw!</h3>
+                <div class="comp-box" style="text-align:center;">
+                    <p>Utilizaremos la aplicación <strong> <a href="https://quickdraw.withgoogle.com/">Quick, Draw!</a></strong> de Google.</p>
+                    <p style="margin: 15px 0;"><strong>Análisis post-Juego:</strong> ¿Por qué la IA supo que era un círculo antes de terminarlo?</p>
+                    <p style="color: var(--terminal-green);"><em>Explicación: La IA analiza la dirección y velocidad del trazo (atributos de movimiento) comparándolos con millones de dibujos previos.</em></p>
+                </div>
+
+                <h3 class="section-title">5. El poder de los datos</h3>
+                <div class="comp-box" style="border-left: 5px solid var(--boost-accent);">
+                    <p><strong>Reflexión:</strong> Si le enseñamos a una IA 1,000 fotos de perros y luego le mostramos un gato, ¿qué dirá la IA?</p>
+                    <p style="margin-top:10px;"><em>(Probablemente dirá que es un perro raro).</em></p>
+                    <p style="margin-top:15px; font-weight:bold;">Mensaje final: La IA solo sabe lo que nosotros le enseñamos.</p>
+                </div>
+            `,
+			5: `
+                <div class="lesson-header">
+                    <p class="mono" style="color: var(--main-accent)">IA_MODULE_NLP</p>
+                    <h2 style="font-size: 2rem;">Clase 5: La máquina de predicción (NLP)</h2>
+                    <p style="margin-top: 10px;"><strong>Objetivo:</strong> Entender que la IA no "entiende" el lenguaje como nosotros, sino que calcula la probabilidad estadística.</p>
+                </div>
+
+                <h3 class="section-title">1. Dinámica: "El autocorrector humano"</h3>
+                <div class="comp-box">
+                    <p><strong>El juego: </strong>Completa los siguientes refranes mentalmente.</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>"Cachicamo diciéndole a..." <span style="color: var(--terminal-green)">[?]</span></li>
+                        <li>"Guerra avisada..." <span style="color: var(--terminal-green)">[?]</span></li>
+                        <li>"Camarón que se duerme..." <span style="color: var(--terminal-green)">[?]</span></li>
+						<li>"Chivo que se devuelve..." <span style="color: var(--terminal-green)">[?]</span></li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>¿Cómo supiste qué seguía?</strong> Tu cerebro ha escuchado esto miles de veces. Un Chatbot hace lo mismo: predice la palabra más probable.</p>
+                </div>
+
+                <h3 class="section-title">2. ¿Qué es el NLP? Tokens y probabilidades</h3>
+                <div class="comp-box">
+                    <p><strong>Natural Language Processing:</strong> NPL o Procesamiento de Lenguaje Natural, es la parte de la Inteligencia Artificial que se encarga de que las máquinas entiendan, interpreten y hablen nuestro idioma.</p><br>
+					<p><strong>¿Qué es un Token?</strong> Las computadoras no leen palabras, sino números. Dividen las oraciones en pedazos pequeños llamados "Tokens".
+                    <p style="margin-top:10px;"><strong>La calculadora de palabras:</strong> Los modelos como ChatGPT, Gemini, (Keyboards/Teclado), entre otros; son, en realidad, calculadoras gigantes. Entonces, si escribes "El cielo está...", la IA calcula y sugiere:</p><br>
+                    <ul style="margin-left: 20px; color: var(--main-accent);">
+                        <li>Azul: 90%</li>
+                        <li>Nublado: 8%</li>
+                        <li>Pizza: 0.001%</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">3. Tokenización manual</h3>
+                <div class="comp-box">
+                    <p>Tenemos la siguiente frase: <strong>"Me gusta el helado"</strong></p>
+					<ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Debemos <span style="color: var(--terminal-green)">tokenizarla (cortarla) </span>de tres formas diferentes: por letras, por sílabas y por palabras.</li>
+                        <li>¿Cuál forma creen que es más fácil para una computadora? (Pista: los modelos modernos usan pedazos de palabras para ahorrar memoria).</li>
+                    </ul><br>
+					<div class="token">Me</div> <div class="token">gusta</div> <div class="token">el</div> <div class="token">helado</div>
+                    <p style="margin: 10px 0;">Así es como la IA corta la información <span style="color: var(--terminal-green)">(Tokens)</span></p>
+                    
+
+					
+                    <p style="margin-top: 20px;"><strong>Limpieza de datos:</strong> La IA quita palabras "vacías" (el, un, de) para entender el núcleo: <span style="color: var(--boost-accent)">Gusta + Helado</span>.</p>
+                    
+                    <button class="toggle-trigger" onclick="toggleElem('sentiment')">¿Qué siente la IA aquí?</button>
+                    <div id="sentiment" class="hidden-section">
+                        <p style="color: var(--terminal-green)"><strong>Análisis de sentimientos:</strong> Positivo (+1). La IA reconoce que "gusta" es una emoción de agrado y descarta lo malo o lo neutro.</p>
+                    </div>
+                </div>
+
+                <h3 class="section-title">4. "El teléfono descompuesto" de la IA</h3>
+                <div class="comp-box" style="border-left: 4px solid #ff4b4b;">
+                    <p><strong>El Reto:</strong> Traducir un modismo como "Ponerse las pilas".</p><br>
+                    <p>Traducir de forma literal esta frase con una IA en el siguiente orden-> Alemán -> Chino -> Español.</p><br>
+                    <p style="margin-top: 10px;">Observa el resultado y responde:<strong> ¿Por qué falla?</strong> La IA es excelente con la gramática, pero a veces falla con el "sentido común" o contexto cultural. No "entiende" la intención, solo las frecuencias.</p>
+                </div>
+
+                <h3 class="section-title">5. ¿Creatividad o repetición?</h3>
+                <div class="comp-box">
+                    <p>Si la IA solo repite palabras basadas en lo que leyó en internet... <strong>¿puede ser realmente original?</strong></p>
+                    <p style="margin-top: 15px; font-style: italic; color: var(--text-muted);">Tarea: Mira las 3 sugerencias de tu teclado móvil hoy. Eso es una mini IA de predicción trabajando para ti.</p>
+                </div>
             `
         };
 
@@ -421,10 +558,10 @@
 
         // Generar resto de clases bloqueadas
         const gridT = document.getElementById('grid-theory');
-        for(let i=0; i<14; i++) {
+        for(let i=0; i<11; i++) {
             gridT.innerHTML += `
                 <div class="class-card" style="opacity:0.5">
-                    <span class="mono">CLASE ${(i+3).toString().padStart(2,'0')}</span>
+                    <span class="mono">CLASE ${(i+6).toString().padStart(2,'0')}</span>
                     <h3>Próximamente...</h3>
                     <button class="btn-action" style="background:var(--border); color:var(--text-muted); cursor:not-allowed">Bloqueado</button>
                 </div>`;
