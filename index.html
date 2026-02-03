@@ -203,6 +203,12 @@
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Entender porque la IA no "entiende" nuestro lenguaje.</p>
                     <button class="btn-action btn-main" onclick="showLesson(5)">Acceder</button>
                 </div>
+				<div class="class-card">
+                    <span class="mono" style="color: var(--main-accent)">CLASE 06</span>
+                    <h3 style="margin: 10px 0;">Ojos digitales (Visión)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Comprender cómo las máquinas transforman luz y color en datos numéricos para procesar información.</p>
+                    <button class="btn-action btn-main" onclick="showLesson(6)">Acceder</button>
+                </div>
             </div>
         </div>
     </div>
@@ -523,6 +529,84 @@
                     <p>Si la IA solo repite palabras basadas en lo que leyó en internet... <strong>¿puede ser realmente original?</strong></p>
                     <p style="margin-top: 15px; font-style: italic; color: var(--text-muted);">Tarea: Mira las 3 sugerencias de tu teclado móvil hoy. Eso es una mini IA de predicción trabajando para ti.</p>
                 </div>
+            `,
+			6: `
+                <div class="lesson-header">
+                    <p class="mono" style="color: var(--main-accent)">IA_MODULE_VISION</p>
+                    <h2 style="font-size: 2.2rem;">Clase 6: Ojos digitales (Visión por computadora)</h2>
+                    <p style="margin-top: 10px;"><strong>Objetivo:</strong> Comprender cómo las máquinas transforman luz y color en datos numéricos para reconocer objetos, rostros y entornos.</p>
+                </div>
+
+                <h3 class="section-title">1. El mundo en cuadritos</h3>
+				<div class="comp-box" style="border-left: 5px solid var(--boost-accent);">
+            <p>La<strong> Visión por Computadora</strong> es la rama de la Inteligencia Artificial que busca que las máquinas puedan ver, entender e interpretar el mundo visual tal como lo hacemos nosotros. No se trata solo de que la cámara "tome la foto", sino de que el "cerebro" de la computadora entienda qué está pasando en ella.</p>
+        		</div>
+				<div class="comp-box" style="border-left: 5px solid var(--terminal-green);">
+                    <p>Imagina que quieres enseñarle a un robot la diferencia entre un perro y un gato. Tú lo haces al instante, pero para una computadora, una imagen es solo una cuadrícula gigante de números (píxeles).</p>
+                </div>
+                <div class="comp-box">
+                    <p>🟥 <strong>¿Qué es un Píxel?</strong> La palabra viene de la unión de dos términos en inglés: <em>Pix</em> (de picture / imagen) y <em>El</em> (de element / elemento). Es la unidad de color más pequeña de una pantalla.</p>
+                    <p style="margin-top:15px;"><strong>La anatomía del color:</strong> Cada píxel se representa matemáticamente como una terna: <span class="mono" style="color: var(--terminal-green)">(R, G, B)</span>.</p>
+                    <ul style="margin-left: 20px; margin-top:10px;">
+                        <li><div class="pixel-demo" style="background: white;"></div> Blanco puro: (255, 255, 255)</li>
+                        <li><div class="pixel-demo" style="background: black;"></div> Negro: (0, 0, 0)</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">2. ¿Cómo "entiende" la IA lo que ve?</h3>
+                <div class="comp-box">
+                    <p>La IA no identifica todo de golpe. Lo hace por <strong>capas</strong>:</p>
+                    <ol style="margin-left: 20px; margin-top: 10px; color: var(--text-muted);">
+                        <li><strong style="color: var(--text-main);">Capa 1 (Bordes):</strong> Busca líneas verticales y horizontales.</li>
+                        <li><strong style="color: var(--text-main);">Capa 2 (Formas):</strong> Une líneas para encontrar círculos o cuadrados.</li>
+                        <li><strong style="color: var(--text-main);">Capa 3 (Partes):</strong> Identifica estructuras (un ojo, una rueda).</li>
+                        <li><strong style="color: var(--text-main);">Capa 4 (Objeto):</strong> Concluye: "Esto es un rostro".</li>
+                    </ol><br>
+					<p><strong>Aplicaciones reales:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; color: var(--text-muted);">
+                        <li><strong style="color: var(--text-main);">Face ID:</strong> Tu teléfono crea un mapa analizando la profundidad y rasgos de tu cara.</li>
+                        <li><strong style="color: var(--text-main);">Autos autónomos:</strong> Deben distinguir entre una persona cruzando la calle y un poste de luz.</li>
+                        <li><strong style="color: var(--text-main);">Filtros de instagram/Tik Tok:</strong> La IA busca los "puntos clave" de tu cara (ojos, boca) para pegar la máscara en el lugar correcto.</li>
+						<li><strong style="color: var(--text-main);">Deportes:</strong> En el fútbol, el "Ojo de Halcón" o el VAR automático usa visión por computadora para saber si el balón cruzó la línea de gol.</li>
+                    </ul>
+                </div>
+
+                
+
+                <h3 class="section-title">3. Dinámica analógica: "El filtro humano"</h3>
+                <div class="comp-box">
+                    <p><strong>Actividad:</strong> Colocarse en parejas (IA y Programador).</p><br>
+					<p><strong>El reto:</strong> Un alumno será la "IA" y el otro el "Programador".
+					<ul style="margin-left: 20px; margin-top: 10px; color: var(--text-muted);">
+                        <li>El programador le entrega a la "IA" una hoja con una cuadrícula de 10 x 10</li>
+                        <li>El programador no puede decir qué objeto es, solo puede dar instrucciones de coordenadas y color.</li>
+						<li>El programador da coordenadas en una cuadrícula de 10x10, por ejemplo:</li>
+                    </ul>
+                    <p class="mono" style="background: #000; padding: 10px; border-radius: 5px; margin-top:10px;">
+                        "Pinta de negro los píxeles (2,2), (2,3), (3,2), (3,3)"
+                    </p>
+                    <p style="margin-top: 10px;"><strong>Lección:</strong> Así procesa la IA la información: coordenada por coordenada, valor por valor.</p>
+                </div>
+
+                <h3 class="section-title">4. Práctica digital: Google Lens</h3>
+                <div class="comp-box">
+                    <p><strong>Experimento:</strong> Toma fotos a un objeto real vs. un dibujo del mismo objeto.</p>
+                    <button class="toggle-trigger" onclick="toggleElem('exp-vision')">¿Por qué falla en el dibujo?</button>
+                    <div id="exp-vision" class="hidden-section">
+                        <p style="color: var(--terminal-green)">Explicación: El dibujo carece de texturas, sombras y "puntos clave" que la IA aprendió de millones de fotos reales.</p>
+                    </div>
+                </div>
+
+                <h3 class="section-title">5. Reflexión y ética: ¿Puede la IA ser "ciega"?</h3>
+                <div class="comp-box" style="border-left: 4px solid #ff4b4b;">
+                    <p><strong>El sesgo visual:</strong> Si entrenamos una IA solo con fotos de piel clara, podría no reconocer manos de piel oscura. Esto se llama <strong>Sesgo</strong>.</p><br>
+					<p><strong>El peligro:</strong> ¿Qué pasaría si un auto autónomo no reconoce a una persona porque su ropa es de un color que la IA nunca vio en su entrenamiento?</p>
+                    <p style="margin-top:15px;"><strong>Conclusión:</strong> Ver es calcular. Los píxeles son números y las formas son patrones geométricos. La IA depende de la diversidad de datos que le entregamos.</p>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px; padding: 20px; border: 1px dashed var(--main-accent); border-radius: 12px;">
+                    <p class="mono">PRÓXIMA CLASE: BLOQUE DE PROYECTOS 🚀</p>
+                </div>
             `
         };
 
@@ -558,10 +642,10 @@
 
         // Generar resto de clases bloqueadas
         const gridT = document.getElementById('grid-theory');
-        for(let i=0; i<11; i++) {
+        for(let i=0; i<10; i++) {
             gridT.innerHTML += `
                 <div class="class-card" style="opacity:0.5">
-                    <span class="mono">CLASE ${(i+6).toString().padStart(2,'0')}</span>
+                    <span class="mono">CLASE ${(i+7).toString().padStart(2,'0')}</span>
                     <h3>Próximamente...</h3>
                     <button class="btn-action" style="background:var(--border); color:var(--text-muted); cursor:not-allowed">Bloqueado</button>
                 </div>`;
