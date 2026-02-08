@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI</title>
+    <title>AI - Clase 9</title>
 	<link rel="icon" sizes="64x64" href="img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -29,9 +29,7 @@
         }
 
         .mono { font-family: 'Fira Code', monospace; }
-
 		.me{color: var(--boost-accent); }
-
         .app-container { max-width: 1100px; margin: 0 auto; padding: 20px; }
 
         .welcome-hero {
@@ -81,9 +79,14 @@
         .section-title { color: var(--boost-accent); margin: 35px 0 15px; font-family: 'Fira Code'; font-size: 1.5rem; }
         .comp-box { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 30px; border-radius: 16px; margin-bottom: 25px; }
 
-        .image-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
-        .image-box { text-align: center; }
-        .image-box img { width: 100%; border-radius: 12px; border: 1px solid var(--border); }
+        /* Tooltip text style */
+        .tooltip { position: relative; display: inline-block; border-bottom: 1px dotted var(--main-accent); color: var(--main-accent); cursor: help; }
+        .tooltip .tooltiptext {
+            visibility: hidden; width: 200px; background-color: #1e293b; color: #fff; text-align: center;
+            border-radius: 6px; padding: 10px; position: absolute; z-index: 1; bottom: 125%; left: 50%;
+            margin-left: -100px; opacity: 0; transition: opacity 0.3s; font-family: sans-serif; font-size: 0.85rem; border: 1px solid var(--main-accent);
+        }
+        .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
 
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -96,67 +99,10 @@
         }
         .close-modal { position: absolute; top: 25px; right: 25px; color: var(--text-muted); cursor: pointer; background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 8px 15px; border-radius: 8px; }
 
-        .hidden-section { display: none; margin-top: 15px; animation: fadeIn 0.4s ease; }
-        .toggle-trigger {
-            background: rgba(0, 242, 255, 0.1); border: 1px solid var(--main-accent); 
-            color: var(--main-accent); padding: 6px 14px; border-radius: 8px;
-            cursor: pointer; font-family: 'Fira Code'; font-size: 0.85rem;
-            margin-top: 10px; margin-right: 10px; transition: 0.3s;
-        }
-
-		.token { display: inline-block; padding: 4px 8px; margin: 2px; border-radius: 4px; background: rgba(0, 242, 255, 0.2); border: 1px solid var(--main-accent); color: var(--main-accent); font-family: 'Fira Code'; font-size: 0.9rem; }
-		
-        .toggle-trigger:hover { background: var(--main-accent); color: #000; }
-
-        .info-icon { 
-            background: var(--main-accent); color: #000; width: 26px; height: 26px; border-radius: 50%; 
-            display: inline-flex; align-items: center; justify-content: center; cursor: pointer; 
-            font-weight: bold; margin-left: 12px;
-        }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-
-    <div class="modal-overlay" id="modalTuring">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('modalTuring')">Cerrar [X]</button>
-            <h2 style="color: var(--main-accent); margin-bottom: 25px;">Alan Turing: El hombre que venció a una máquina con otra máquina 🕵️‍♂️💻</h2>
-            <div style="font-size: 1.05rem;">
-                <h3 style="color: var(--terminal-green); margin-bottom:10px;">1. El Problema Imposible</h3>
-                <p>Imaginen que estamos en la Segunda Guerra Mundial. Los nazis envían mensajes secretos por radio para hundir barcos. Pero hay un problema: usan una máquina llamada Enigma.<br>Enigma convertía mensajes normales en código indescifrable.<br>Tenía 158 quintillones de combinaciones posibles.<br>Los alemanes cambiaban la configuración cada medianoche.<br>Si 10 personas trabajaran 24 horas al día probando combinaciones, tardarían 20 millones de años en descifrar un solo mensaje. ¡Y los alemanes lo cambiaban cada 24 horas!</p>
-                <h3 style="color: var(--terminal-green); margin: 20px 0 10px;">2. El Genio que pensaba diferente</h3>
-                <p>Aquí entra Alan Turing. Era un matemático británico un poco excéntrico al que le encantaban los maratones y los rompecabezas. Mientras todos los demás intentaban descifrar los mensajes "a mano" usando papel y lápiz, Turing dijo algo que cambió el mundo:<br><strong>"Para vencer a una máquina, necesitamos otra máquina".</strong></p>
-                <h3 style="color: var(--terminal-green); margin: 20px 0 10px;">3. The Bombe: El primer "Cerebro"</h3>
-                <p>Turing diseñó una máquina gigante llena de cables y ruedas giratorias llamada "The Bombe".<br>• No era una computadora como la de hoy, pero era el tatarabuelo de tu laptop.<br>• Su trabajo era descartar miles de combinaciones por segundo hasta encontrar la correcta.<br>Gracias a su invento, lograron leer los mensajes secretos. Se estima que el trabajo de Turing acortó la guerra al menos 2 años y salvó más de 14 millones de vidas.</p>
-                <h3 style="color: var(--terminal-green); margin: 20px 0 10px;">4. La Pregunta del Millón</h3>
-                <p>Cuando terminó la guerra, Turing no se detuvo. Empezó a preguntarse: "¿Podrá una máquina llegar a pensar como un humano?". En 1950, propuso el "Test de Turing" (o Juego de la Imitación). Dijo que si un humano chatea con una computadora y no puede distinguir si es una persona o un programa, entonces podemos decir que la máquina es inteligente.</p>
-                <h3 style="color: var(--terminal-green); margin: 20px 0 10px;">5. Su Legado</h3>
-                <p>Hoy, cada vez que usas ChatGPT, hablas con Alexa o juegas un videojuego, estás usando tecnología que empezó con las ideas de Alan. Él no solo descifró códigos; descifró el futuro. Por eso lo llamamos "El Padre de la Computación y la Inteligencia Artificial".</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="modalTestTuring">
-        <div class="modal-content" style="border-color: var(--boost-accent)">
-            <button class="close-modal" onclick="closeModal('modalTestTuring')">Cerrar [X]</button>
-            <h2 style="color: var(--boost-accent); margin-bottom: 25px;">¿En qué consiste el Test de Turing? 🧠🤖</h2>
-            <div style="font-size: 1.05rem;">
-                <h3 style="color: var(--main-accent); margin-bottom:10px;">1. El Escenario</h3>
-                <p>Imagina que estás en una habitación con tu computadora. Tienes dos ventanas de chat abiertas:<br>• En el Chat A, hablas con una persona real que está en otro lugar.<br>• En el Chat B, hablas con un programa de Inteligencia Artificial.<br>La regla de oro: No puedes verlos, no puedes oírlos, solo puedes leer lo que escriben.</p>
-                <h3 style="color: var(--main-accent); margin: 20px 0 10px;">2. El Desafío</h3>
-                <p>Tu misión es hacer todas las preguntas que quieras para descubrir quién es quién. Puedes preguntar:<br>"¿Qué se siente estar enamorado?"<br>"¿Cómo se resuelve esta ecuación de matemáticas?"<br>"Cuéntame un chiste que no sea de Google".<br>"¿Qué opinas del color azul?"<br>El humano intentará demostrar que es humano. La IA intentará engañarte haciéndose pasar por una persona.</p>
-                <h3 style="color: var(--main-accent); margin: 20px 0 10px;">3. El Resultado</h3>
-                <p>Después de 5 minutos de conversación, tienes que decidir:<br>Si al final dices: "¡No tengo idea! Los dos me parecen humanos", o si te equivocas y señalas a la máquina como la persona...<br><strong>¡La IA ha pasado el Test de Turing!</strong></p>
-                <h3 style="color: var(--main-accent); margin: 20px 0 10px;">4. La Gran Pregunta de Alan</h3>
-                <p>Alan Turing decía: "Si una máquina se comporta de forma inteligente, ¿importa realmente si es inteligente o si solo está imitando?". Él no quería discutir si las máquinas tenían "alma" o "sentimientos", sino si podían actuar de forma indistinguible de nosotros.</p>
-                <h3 style="color: var(--main-accent); margin: 20px 0 10px;">5. ¿Hoy en día alguien lo ha logrado?</h3>
-                <p>Durante décadas, ninguna IA pudo engañar a los expertos. Pero hoy, con modelos como ChatGPT, el test se ha vuelto muy difícil para nosotros. A veces, las IAs son tan buenas escribiendo que pasamos el test sin darnos cuenta todos los días en internet.</p>
-            </div>
-        </div>
-    </div>
 
     <div class="app-container" id="main-dashboard">
         <header class="welcome-hero">
@@ -174,40 +120,10 @@
         <div id="theory" class="tab-content active">
             <div class="class-grid" id="grid-theory">
                 <div class="class-card">
-                    <span class="mono" style="color: var(--main-accent)">CLASE 01</span>
-                    <h3 style="margin: 10px 0;">El Despertar de las Máquinas</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">¿Qué es (y qué no es) la IA? Descubre la diferencia entre reglas fijas y patrones.</p>
-                    <button class="btn-action btn-main" onclick="showLesson(1)">Acceder</button>
-                </div>
-                <div class="class-card">
-                    <span class="mono" style="color: var(--main-accent)">CLASE 02</span>
-                    <h3 style="margin: 10px 0;">Pro vs. Master</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Diferencia entre la IA que cumple una sola función (Débil) y la IA que puede razonar (Fuerte).</p>
-                    <button class="btn-action btn-main" onclick="showLesson(2)">Acceder</button>
-                </div>
-				<div class="class-card">
-                    <span class="mono" style="color: var(--main-accent)">CLASE 03</span>
-                    <h3 style="margin: 10px 0;">Evaluación</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Aplicaciones prácticas y dinámicas de los contenidos vistos en las clases 1 y 2</p>
-                    <button class="btn-action btn-main" onclick="">Realizada</button>
-                </div>
-				<div class="class-card">
-                    <span class="mono" style="color: var(--main-accent)">CLASE 04</span>
-                    <h3 style="margin: 10px 0;">El detective de datos</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Comprende cómo las máquinas clasifican información con Machine Learning.</p>
-                    <button class="btn-action btn-main" onclick="showLesson(4)">Acceder</button>
-                </div>
-				<div class="class-card">
-                    <span class="mono" style="color: var(--main-accent)">CLASE 05</span>
-                    <h3 style="margin: 10px 0;">La máquina de predicción (NLP)</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Entender porque la IA no "entiende" nuestro lenguaje.</p>
-                    <button class="btn-action btn-main" onclick="showLesson(5)">Acceder</button>
-                </div>
-				<div class="class-card">
-                    <span class="mono" style="color: var(--main-accent)">CLASE 06</span>
-                    <h3 style="margin: 10px 0;">Ojos digitales (Visión)</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Comprender cómo las máquinas transforman luz y color en datos numéricos para procesar información.</p>
-                    <button class="btn-action btn-main" onclick="showLesson(6)">Acceder</button>
+                    <span class="mono" style="color: var(--main-accent)">CLASE 09</span>
+                    <h3 style="margin: 10px 0;">Cine Ético: Prueba Práctica 1</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Proyecto creativo: Diseña un póster de cine sobre dilemas éticos usando IA.</p>
+                    <button class="btn-action btn-main" onclick="showLesson(9)">Acceder</button>
                 </div>
             </div>
         </div>
@@ -215,421 +131,25 @@
 
     <div class="app-container" id="lesson-reader">
         <button class="tab-btn" style="margin-bottom: 30px;" onclick="hideLesson()">← Volver al Panel</button>
-        
-        <div id="lesson-content">
-            </div>
+        <div id="lesson-content"></div>
     </div>
 
     <script>
-        const lessons = {
-            1: `
-                <div class="lesson-header">
-            <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_01</p>
-            <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 1: El Despertar de las Máquinas, ¿Qué es (y qué no es) la Inteligencia Artificial?</h2>
-            <p style="margin-top: 20px; font-size: 1.1rem;"><strong>Objetivo:</strong> Que el estudiante diferencie entre un software tradicional y un sistema de IA, comprendiendo que la IA se basa en patrones y no solo en reglas fijas.</p>
-        </div>
-
-        <h3 class="section-title">1. "¿Quién es el genio?"</h3>
-        <p style="font-size: 1.1rem;"><strong>Pregunta:</strong> "Si una calculadora puede resolver $98.342 \div 12$ en un milisegundo, ¿es inteligente?". Escucha 2 o 3 opiniones.</p>
-
-        <h4 style="color: var(--terminal-green); margin: 30px 0 15px; font-size: 1.3rem;">La Diferencia:</h4>
-        <div class="comp-box">
-            <p><strong>Software Tradicional (La Calculadora):</strong> Sigue instrucciones paso a paso. Si no le das la instrucción exacta, no sabe qué hacer. (Entrada -> Regla Fija -> Salida).</p>
-        </div>
-        <div class="comp-box" style="border-left: 5px solid var(--boost-accent);">
-            <p><strong>Inteligencia Artificial (Recomendador de TikTok/YouTube):</strong> No tiene una regla fija para todos. Aprende de lo que TÚ haces, reconoce tus gustos y "predice" qué te hará quedar viendo la pantalla. (Entrada -> Aprendizaje de Patrones -> Predicción).</p>
-        </div>
-
-        <h3 class="section-title">2. Teoría: ¿Qué es la IA? y el Test de Turing</h3>
-        <p style="font-size: 1.1rem; background: rgba(0,242,255,0.05); padding: 25px; border-radius: 15px; border-left: 4px solid var(--main-accent);">
-            <strong>Definición:</strong> La IA es la capacidad de un sistema informático de imitar funciones que asociamos con la mente humana, como aprender de la experiencia y resolver problemas.
-        </p>
-        <div class="comp-box" style="margin-top: 30px;">
-            <p style="font-size: 1.2rem;"><strong>El Padre de la IA: Alan Turing</strong> <span class="info-icon" onclick="openModal('modalTuring')">i</span></p>
-            <p style="margin-top: 20px; font-size: 1.2rem;"><strong>El Test de Turing o juego de imitación</strong> <span class="info-icon" style="background: var(--boost-accent); color: #fff" onclick="openModal('modalTestTuring')">?</span></p>
-        </div>
-
-        <h3 class="section-title">3. "Humano o Máquina"</h3>
-        <p style="font-size: 1.1rem; margin-bottom: 20px;">Esta actividad es un "Mini Test de Turing" en el salón.</p>
-
-        <div class="comp-box">
-            <h4>Reto 1: El Poeta del Aula 📝</h4>
-            <button class="toggle-trigger" onclick="toggleElem('opt1')">Revelar Reto</button>
-            <button class="toggle-trigger" style="border-color: var(--boost-accent); color: var(--boost-accent);" onclick="toggleElem('ans1')">Ver Respuesta</button>
-            <div id="opt1" class="hidden-section">
-                <p style="margin-top:10px"><strong>Tema:</strong> Un poema corto sobre un perro.</p>
-                <p><strong>Opción A:</strong> "Peludo amigo de cuatro patas, ladras al viento y corres tras las gatas. Tu amor es puro, tu cola un motor, eres en casa el mejor calor."</p>
-                <p><strong>Opción B:</strong> "Mi perro es café y le gusta saltar. Ayer se comió un zapato y mi mamá lo regañó, pero luego le dio un premio porque es muy lindo. Guau guau, eres mi mejor amigo."</p>
-            </div>
-            <div id="ans1" class="hidden-section">
-                <p style="margin-top:15px; color: var(--terminal-green); font-weight: bold;">Respuesta:</p>
-                <p style="font-style: italic; color: var(--text-muted);">> * A es IA (ChatGPT): Es muy rítmico, rimas perfectas.<br>> * B es Humano: Tiene errores de estructura y cuenta una anécdota real.</p>
-            </div>
-        </div>
-
-        <div class="comp-box">
-            <h4>Reto 2: El Artista Digital 🎨</h4>
-            <button class="toggle-trigger" onclick="toggleElem('opt2')">Revelar Reto</button>
-            <button class="toggle-trigger" style="border-color: var(--boost-accent); color: var(--boost-accent);" onclick="toggleElem('ans2')">Ver Respuesta</button>
-            <div id="opt2" class="hidden-section">
-                <p style="margin-bottom: 15px;">Observa las dos imágenes y decide cuál fue creada por una IA:</p>
-                <div class="image-container">
-                    <div class="image-box"><img src="img/a.png" alt="Imagen A"><p>Opción A</p></div>
-                    <div class="image-box"><img src="img/b.png" alt="Imagen B"><p>Opción B</p></div>
-                </div>
-            </div>
-            <div id="ans2" class="hidden-section">
-                <p style="margin-top:15px; color: var(--terminal-green); font-weight: bold;">Respuesta:</p>
-                <p style="font-style: italic; color: var(--text-muted);">> * A es IA: Los errores en la super iluminación, elementos pulidos y sombras extrañas son típicos de la IA.<br>> * B es Humano: Los trazos de lápiz y las imperfecciones y texturas lógicas indican mano humana.</p>
-            </div>
-        </div>
-
-        <div class="comp-box">
-            <h4>Reto 3: El Compositor de Canciones 🎸</h4>
-            <button class="toggle-trigger" onclick="toggleElem('opt3')">Revelar Reto</button>
-            <button class="toggle-trigger" style="border-color: var(--boost-accent); color: var(--boost-accent);" onclick="toggleElem('ans3')">Ver Respuesta</button>
-            <div id="opt3" class="hidden-section">
-                <p><strong>Opción A:</strong> "Nivel tras nivel, el jefe final me espera en la oscuridad. Presiono X, luego saltar..."</p>
-                <p><strong>Opción B:</strong> "Estoy harto de perder contra el boss, mi internet va lento y mi hermano me gritó que bajara a cenar..."</p>
-            </div>
-            <div id="ans3" class="hidden-section">
-                <p style="color: var(--terminal-green); font-weight: bold;">Respuesta: A es IA, B es Humano (Contexto social).</p>
-            </div>
-        </div>
-
-        <div class="comp-box">
-            <h4>Reto 4: El Reportero de Noticias 📰</h4>
-            <button class="toggle-trigger" onclick="toggleElem('opt4')">Revelar Reto</button>
-            <button class="toggle-trigger" style="border-color: var(--boost-accent); color: var(--boost-accent);" onclick="toggleElem('ans4')">Ver Respuesta</button>
-            <div id="opt4" class="hidden-section">
-                <p><strong>Opción A:</strong> "Científicos descubren que las vacas pueden aprender a usar el baño..."</p>
-                <p><strong>Opción B:</strong> "Un robot en Japón fue arrestado tras intentar comprar una batería..."</p>
-            </div>
-            <div id="ans4" class="hidden-section">
-                <p style="color: var(--terminal-green); font-weight: bold;">Respuesta: A es Humano (Real), B es IA (Inventado).</p>
-            </div>
-        </div>
-
-        <div class="comp-box">
-            <h4>Reto 5: La Opinión Personal 🤔</h4>
-            <button class="toggle-trigger" onclick="toggleElem('opt5')">Revelar Reto</button>
-            <button class="toggle-trigger" style="border-color: var(--boost-accent); color: var(--boost-accent);" onclick="toggleElem('ans5')">Ver Respuesta</button>
-            <div id="opt5" class="hidden-section">
-                <p><strong>Opción A:</strong> "Como soy un programa de IA, no tengo sentido del gusto..."</p>
-                <p><strong>Opción B:</strong> "El de chocolate con trozos de galleta, definitivamente. No acepto discusiones."</p>
-            </div>
-            <div id="ans5" class="hidden-section">
-                <p style="color: var(--terminal-green); font-weight: bold;">Respuesta: A es IA, B es Humano.</p>
-            </div>
-        </div>
-
-        <h3 class="section-title">4. Construcción Colectiva</h3>
-        <div class="comp-box" style="border-left: 5px solid var(--terminal-green);">
-            <p><strong>Palabras clave de lo visto hoy:</strong> Patrones, Algoritmos, Test de Turing, Predicción, Humano vs. Máquina.</p>
-            <p style="margin-top: 20px;"><strong>La Tarea Mental:</strong> "De aquí a la próxima clase, observen su teléfono o computadora y anoten 3 momentos donde crean que una IA les está hablando o sugiriendo algo".</p>
-            <p style="margin-top: 20px; color: var(--text-muted); font-style: italic;">La siguiente clase veremos por qué la IA de un brazo robótico es distinta a la de una película de ciencia ficción (IA Débil vs. Fuerte).</p>
-        </div>
-    </div>
-            `,
-            2: `
-                <div class="lesson-header">
-                    <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_01</p>
-                    <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 2: Especialistas vs. Genios Multitarea</h2>
-                    <p style="margin-top: 20px; font-size: 1.1rem;"><strong>Objetivo:</strong> Diferenciar entre la IA que cumple una sola función (Débil) y la IA hipotética que puede razonar como un humano (Fuerte), analizando ejemplos de la vida real y el cine.</p>
-                </div>
-
-                <h3 class="section-title">1. Repaso y "El Reto del Chef"</h3>
-                <p>Pregunta rápida: "¿Alguien encontró una IA en su casa esta semana?" (Escucha 2 ejemplos).</p>
-                <div class="comp-box" style="margin-top:20px;">
-                    <p><strong>El Reto del Chef:</strong> "Tenemos una IA que es la mejor del mundo jugando Ajedrez. Si le pido a esa misma IA que me dé una receta para hacer galletas de chocolate, ¿podrá hacerlo?"</p>
-                    <p style="margin-top:15px; color: var(--terminal-green);"><strong>Conclusión:</strong> No. La mayoría de las IA son como herramientas de cocina: un pelapapas es genial pelando papas, pero no puedes usarlo para batir huevos. A eso lo llamamos IA Débil.</p>
-                </div>
-
-                <h3 class="section-title">2. Teoría: Los dos mundos de la IA</h3>
-                <div class="comp-box" style="border-left: 5px solid var(--main-accent);">
-                    <h4>A. IA Débil o Estrecha (Narrow AI) - "La Especialista"</h4>
-                    <p><strong>Definición:</strong> Programas diseñados para realizar una sola tarea extremadamente bien.</p>
-                    <ul style="margin-left:20px; margin-top:10px;">
-                        <li><strong>Filtros de Instagram:</strong> Solo reconocen caras y ponen orejas de perro. No saben jugar ajedrez.</li>
-                        <li><strong>Recomendaciones de YouTube:</strong> Solo analizan videos. No saben conducir un coche.</li>
-                        <li><strong>Asistentes de voz (Siri/Alexa):</strong> Parecen inteligentes, pero solo buscan información o ejecutan comandos programados.</li>
-                    </ul>
-                </div>
-                <div class="comp-box" style="border-left: 5px solid var(--boost-accent);">
-                    <h4>B. IA Fuerte o General (AGI) - "La Multitarea"</h4>
-                    <p><strong>Definición:</strong> Una IA que tendría la capacidad de aprender cualquier tarea intelectual que un ser humano pueda hacer. Podría planificar, razonar, tener autoconciencia y sentir emociones.</p>
-                    <p><strong>Estado actual:</strong> No existe todavía. Es teórica.</p>
-                    <p style="margin-top:10px;"><strong>Diferencia clave:</strong> La IA Débil simula inteligencia; la IA Fuerte tendría inteligencia real.</p>
-                </div>
-
-                <h3 class="section-title">3. Análisis Pop: IA en el Cine</h3>
-                <p>Clasifica si son Débiles (reales hoy) o Fuertes (ciencia ficción):</p>
-                
-                <div class="comp-box">
-                    <p>🟢 <strong>Siri / Google Assistant</strong></p>
-                    <button class="toggle-trigger" onclick="toggleElem('cine1')">Revelar Clasificación</button>
-                    <div id="cine1" class="hidden-section"><p style="color: var(--main-accent);"><strong>IA Débil:</strong> Existe hoy, solo responde tareas programadas.</p></div>
-                </div>
-
-                <div class="comp-box">
-                    <p>🔴 <strong>Wall-E</strong></p>
-                    <button class="toggle-trigger" onclick="toggleElem('cine2')">Revelar Clasificación</button>
-                    <div id="cine2" class="hidden-section"><p style="color: var(--boost-accent);"><strong>IA Fuerte:</strong> Siente soledad, tiene curiosidad y voluntad propia.</p></div>
-                </div>
-
-                <div class="comp-box">
-                    <p>🔴 <strong>Baymax (Big Hero 6)</strong></p>
-                    <button class="toggle-trigger" onclick="toggleElem('cine3')">Revelar Clasificación</button>
-                    <div id="cine3" class="hidden-section"><p style="color: var(--boost-accent);"><strong>IA Fuerte:</strong> Entiende emociones complejas y se adapta a ellas.</p></div>
-                </div>
-
-                <div class="comp-box">
-                    <p>🟢 <strong>Algoritmo de TikTok</strong></p>
-                    <button class="toggle-trigger" onclick="toggleElem('cine4')">Revelar Clasificación</button>
-                    <div id="cine4" class="hidden-section"><p style="color: var(--main-accent);"><strong>IA Débil:</strong> Solo sabe predecir qué videos te gustan.</p></div>
-                </div>
-
-                <div class="comp-box">
-                    <p>🔴 <strong>C-3PO (Star Wars)</strong></p>
-                    <button class="toggle-trigger" onclick="toggleElem('cine5')">Revelar Clasificación</button>
-                    <div id="cine5" class="hidden-section"><p style="color: var(--boost-accent);"><strong>IA Fuerte:</strong> Tiene personalidad, miedo y razonamiento humano.</p></div>
-                </div>
-
-                <p style="font-style:italic; margin: 20px 0;">Debate: "¿Qué nos daría más miedo o más emoción: vivir con una IA Débil o con una IA Fuerte? ¿Por qué?"</p>
-
-                <h3 class="section-title">4. Actividad Práctica: "Diseña tu Robot Especialista"</h3>
-                <div class="comp-box">
-                    <p>En parejas, deben inventar una IA Débil que resuelva un problema específico de su escuela o habitación.</p>
-                    <ul style="margin-left:20px; margin-top:10px;">
-                        <li><strong>Nombre de la IA.</strong></li>
-                        <li><strong>Tarea única:</strong> (Ej: "Ordenar solo los calcetines" o "Detectar exámenes sorpresa").</li>
-                        <li><strong>¿Qué NO sabe hacer?:</strong> (Para reforzar que es IA Débil).</li>
-                    </ul>
-                    <p style="margin-top:10px;"><em>Presentación: Compartir 2 o 3 ideas locas con el grupo.</em></p>
-                </div>
-
-                <h3 class="section-title">5. Reflexión y Cierre</h3>
-                <div class="comp-box" style="border-left: 5px solid var(--terminal-green);">
-                    <p><strong>Idea Final:</strong> "Hoy vivimos rodeados de miles de IAs Débiles. Son como un ejército de hormigas especialistas trabajando para nosotros. La IA Fuerte es el sueño (o la pesadilla) del futuro".</p>
-                    <p style="margin-top:15px; font-weight:bold;">Próxima Clase: En la clase 3 tendremos nuestra primera prueba.</p>
-                </div>
-            `,
-			4: `
-                <div class="lesson-header">
-                    <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_01</p>
-                    <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 4: El Detective de datos (Machine Learning)</h2>
-                    <p style="margin-top: 20px; font-size: 1.1rem;"><strong>Objetivo:</strong> Comprender cómo las máquinas clasifican información mediante el uso de "Atributos" y "Etiquetas", y cómo se entrenan para reconocer patrones.</p>
-                </div>
-
-                <h3 class="section-title">1. Dinámica de apertura: "Akinator humano"</h3>
-                <div class="comp-box">
-                    <p><strong>El Juego:</strong> Adivinar un objeto o personaje. El profe solo debe responder sí o no hasta que se acierte.</p>
-                </div>
-
-                <h3 class="section-title">2. Conceptos clave</h3>
-                <div class="comp-box" style="border-left: 5px solid var(--main-accent);">
-                    <p><strong>• Machine learning:</strong> Es el arte de enseñarle a una computadora a aprender de la experiencia, en lugar de darle una lista de instrucciones fijas.</p>
-                    <p><strong>• Atributos (Features):</strong> Son las características que usamos para describir algo (color, tamaño, peso, forma).</p>
-                    <p><strong>• Etiquetas (Labels):</strong> Es el "nombre" que la IA le asigna a un conjunto de atributos (ej. "Gato", "Spam", "Manzana").</p>
-                    <p><strong>• Árbol de decisión:</strong> Es un mapa que te guía a través de una serie de preguntas lógicas para llegar a una respuesta final. Es la forma en que una computadora "clasifica" las cosas o decide qué hacer.
-</p>
-                </div>
-
-                <h3 class="section-title">3. La diferencia clave: ¿Receta o Entrenamiento?</h3>
-                <div class="comp-box">
-                    <p>Imagina que quieres que una computadora reconozca si una fruta es una manzana o una naranja.</p>
-                    <div style="margin-top:15px;">
-                        <p><strong>1. Programación tradicional (La receta):</strong> Tú escribes reglas específicas. "Si es roja y redonda, es manzana. Si es naranja y rugosa, es naranja". El problema es que, si aparece una manzana verde, la computadora se confunde porque no estaba en tu "receta".
-</p>
-                        <p style="margin-top:10px;"><strong>2. Machine Learning (El entrenamiento):</strong> No le das reglas. Le das <strong>miles de fotos</strong> de manzanas y naranjas. La computadora analiza los pixeles, los colores y las formas por sí misma. Al final, ella sola descubre los patrones que diferencian a una de otra.
-</p>
-                    </div>
-                </div>
-
-                <h3 class="section-title">Actividad rápida: Objetos del salón</h3>
-                <div class="comp-box">
-                    <p>Analicemos un lápiz, un cuaderno y una mochila. ¿Qué atributos únicos permiten a una máquina diferenciarlos? Resaltar 3 atributos únicos.
-</p>
-                </div>
-
-                <h3 class="section-title">4. Práctica digital: Quick, Draw!</h3>
-                <div class="comp-box" style="text-align:center;">
-                    <p>Utilizaremos la aplicación <strong> <a href="https://quickdraw.withgoogle.com/">Quick, Draw!</a></strong> de Google.</p>
-                    <p style="margin: 15px 0;"><strong>Análisis post-Juego:</strong> ¿Por qué la IA supo que era un círculo antes de terminarlo?</p>
-                    <p style="color: var(--terminal-green);"><em>Explicación: La IA analiza la dirección y velocidad del trazo (atributos de movimiento) comparándolos con millones de dibujos previos.</em></p>
-                </div>
-
-                <h3 class="section-title">5. El poder de los datos</h3>
-                <div class="comp-box" style="border-left: 5px solid var(--boost-accent);">
-                    <p><strong>Reflexión:</strong> Si le enseñamos a una IA 1,000 fotos de perros y luego le mostramos un gato, ¿qué dirá la IA?</p>
-                    <p style="margin-top:10px;"><em>(Probablemente dirá que es un perro raro).</em></p>
-                    <p style="margin-top:15px; font-weight:bold;">Mensaje final: La IA solo sabe lo que nosotros le enseñamos.</p>
-                </div>
-            `,
-			5: `
-                <div class="lesson-header">
-                    <p class="mono" style="color: var(--main-accent)">IA_MODULE_NLP</p>
-                    <h2 style="font-size: 2rem;">Clase 5: La máquina de predicción (NLP)</h2>
-                    <p style="margin-top: 10px;"><strong>Objetivo:</strong> Entender que la IA no "entiende" el lenguaje como nosotros, sino que calcula la probabilidad estadística.</p>
-                </div>
-
-                <h3 class="section-title">1. Dinámica: "El autocorrector humano"</h3>
-                <div class="comp-box">
-                    <p><strong>El juego: </strong>Completa los siguientes refranes mentalmente.</p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>"Cachicamo diciéndole a..." <span style="color: var(--terminal-green)">[?]</span></li>
-                        <li>"Guerra avisada..." <span style="color: var(--terminal-green)">[?]</span></li>
-                        <li>"Camarón que se duerme..." <span style="color: var(--terminal-green)">[?]</span></li>
-						<li>"Chivo que se devuelve..." <span style="color: var(--terminal-green)">[?]</span></li>
-                    </ul>
-                    <p style="margin-top: 15px;"><strong>¿Cómo supiste qué seguía?</strong> Tu cerebro ha escuchado esto miles de veces. Un Chatbot hace lo mismo: predice la palabra más probable.</p>
-                </div>
-
-                <h3 class="section-title">2. ¿Qué es el NLP? Tokens y probabilidades</h3>
-                <div class="comp-box">
-                    <p><strong>Natural Language Processing:</strong> NPL o Procesamiento de Lenguaje Natural, es la parte de la Inteligencia Artificial que se encarga de que las máquinas entiendan, interpreten y hablen nuestro idioma.</p><br>
-					<p><strong>¿Qué es un Token?</strong> Las computadoras no leen palabras, sino números. Dividen las oraciones en pedazos pequeños llamados "Tokens".
-                    <p style="margin-top:10px;"><strong>La calculadora de palabras:</strong> Los modelos como ChatGPT, Gemini, (Keyboards/Teclado), entre otros; son, en realidad, calculadoras gigantes. Entonces, si escribes "El cielo está...", la IA calcula y sugiere:</p><br>
-                    <ul style="margin-left: 20px; color: var(--main-accent);">
-                        <li>Azul: 90%</li>
-                        <li>Nublado: 8%</li>
-                        <li>Pizza: 0.001%</li>
-                    </ul>
-                </div>
-
-                <h3 class="section-title">3. Tokenización manual</h3>
-                <div class="comp-box">
-                    <p>Tenemos la siguiente frase: <strong>"Me gusta el helado"</strong></p>
-					<ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>Debemos <span style="color: var(--terminal-green)">tokenizarla (cortarla) </span>de tres formas diferentes: por letras, por sílabas y por palabras.</li>
-                        <li>¿Cuál forma creen que es más fácil para una computadora? (Pista: los modelos modernos usan pedazos de palabras para ahorrar memoria).</li>
-                    </ul><br>
-					<div class="token">Me</div> <div class="token">gusta</div> <div class="token">el</div> <div class="token">helado</div>
-                    <p style="margin: 10px 0;">Así es como la IA corta la información <span style="color: var(--terminal-green)">(Tokens)</span></p>
-                    
-
-					
-                    <p style="margin-top: 20px;"><strong>Limpieza de datos:</strong> La IA quita palabras "vacías" (el, un, de) para entender el núcleo: <span style="color: var(--boost-accent)">Gusta + Helado</span>.</p>
-                    
-                    <button class="toggle-trigger" onclick="toggleElem('sentiment')">¿Qué siente la IA aquí?</button>
-                    <div id="sentiment" class="hidden-section">
-                        <p style="color: var(--terminal-green)"><strong>Análisis de sentimientos:</strong> Positivo (+1). La IA reconoce que "gusta" es una emoción de agrado y descarta lo malo o lo neutro.</p>
-                    </div>
-                </div>
-
-                <h3 class="section-title">4. "El teléfono descompuesto" de la IA</h3>
-                <div class="comp-box" style="border-left: 4px solid #ff4b4b;">
-                    <p><strong>El Reto:</strong> Traducir un modismo como "Ponerse las pilas".</p><br>
-                    <p>Traducir de forma literal esta frase con una IA en el siguiente orden-> Alemán -> Chino -> Español.</p><br>
-                    <p style="margin-top: 10px;">Observa el resultado y responde:<strong> ¿Por qué falla?</strong> La IA es excelente con la gramática, pero a veces falla con el "sentido común" o contexto cultural. No "entiende" la intención, solo las frecuencias.</p>
-                </div>
-
-                <h3 class="section-title">5. ¿Creatividad o repetición?</h3>
-                <div class="comp-box">
-                    <p>Si la IA solo repite palabras basadas en lo que leyó en internet... <strong>¿puede ser realmente original?</strong></p>
-                    <p style="margin-top: 15px; font-style: italic; color: var(--text-muted);">Tarea: Mira las 3 sugerencias de tu teclado móvil hoy. Eso es una mini IA de predicción trabajando para ti.</p>
-                </div>
-            `,
-			6: `
-                <div class="lesson-header">
-                    <p class="mono" style="color: var(--main-accent)">IA_MODULE_VISION</p>
-                    <h2 style="font-size: 2.2rem;">Clase 6: Ojos digitales (Visión por computadora)</h2>
-                    <p style="margin-top: 10px;"><strong>Objetivo:</strong> Comprender cómo las máquinas transforman luz y color en datos numéricos para reconocer objetos, rostros y entornos.</p>
-                </div>
-
-                <h3 class="section-title">1. El mundo en cuadritos</h3>
-				<div class="comp-box" style="border-left: 5px solid var(--boost-accent);">
-            <p>La<strong> Visión por Computadora</strong> es la rama de la Inteligencia Artificial que busca que las máquinas puedan ver, entender e interpretar el mundo visual tal como lo hacemos nosotros. No se trata solo de que la cámara "tome la foto", sino de que el "cerebro" de la computadora entienda qué está pasando en ella.</p>
-        		</div>
-				<div class="comp-box" style="border-left: 5px solid var(--terminal-green);">
-                    <p>Imagina que quieres enseñarle a un robot la diferencia entre un perro y un gato. Tú lo haces al instante, pero para una computadora, una imagen es solo una cuadrícula gigante de números (píxeles).</p>
-                </div>
-                <div class="comp-box">
-                    <p>🟥 <strong>¿Qué es un Píxel?</strong> La palabra viene de la unión de dos términos en inglés: <em>Pix</em> (de picture / imagen) y <em>El</em> (de element / elemento). Es la unidad de color más pequeña de una pantalla.</p>
-                    <p style="margin-top:15px;"><strong>La anatomía del color:</strong> Cada píxel se representa matemáticamente como una terna: <span class="mono" style="color: var(--terminal-green)">(R, G, B)</span>.</p>
-                    <ul style="margin-left: 20px; margin-top:10px;">
-                        <li><div class="pixel-demo" style="background: white;"></div> Blanco puro: (255, 255, 255)</li>
-                        <li><div class="pixel-demo" style="background: black;"></div> Negro: (0, 0, 0)</li>
-                    </ul>
-                </div>
-
-                <h3 class="section-title">2. ¿Cómo "entiende" la IA lo que ve?</h3>
-                <div class="comp-box">
-                    <p>La IA no identifica todo de golpe. Lo hace por <strong>capas</strong>:</p>
-                    <ol style="margin-left: 20px; margin-top: 10px; color: var(--text-muted);">
-                        <li><strong style="color: var(--text-main);">Capa 1 (Bordes):</strong> Busca líneas verticales y horizontales.</li>
-                        <li><strong style="color: var(--text-main);">Capa 2 (Formas):</strong> Une líneas para encontrar círculos o cuadrados.</li>
-                        <li><strong style="color: var(--text-main);">Capa 3 (Partes):</strong> Identifica estructuras (un ojo, una rueda).</li>
-                        <li><strong style="color: var(--text-main);">Capa 4 (Objeto):</strong> Concluye: "Esto es un rostro".</li>
-                    </ol><br>
-					<p><strong>Aplicaciones reales:</strong></p>
-                    <ul style="margin-left: 20px; margin-top: 10px; color: var(--text-muted);">
-                        <li><strong style="color: var(--text-main);">Face ID:</strong> Tu teléfono crea un mapa analizando la profundidad y rasgos de tu cara.</li>
-                        <li><strong style="color: var(--text-main);">Autos autónomos:</strong> Deben distinguir entre una persona cruzando la calle y un poste de luz.</li>
-                        <li><strong style="color: var(--text-main);">Filtros de instagram/Tik Tok:</strong> La IA busca los "puntos clave" de tu cara (ojos, boca) para pegar la máscara en el lugar correcto.</li>
-						<li><strong style="color: var(--text-main);">Deportes:</strong> En el fútbol, el "Ojo de Halcón" o el VAR automático usa visión por computadora para saber si el balón cruzó la línea de gol.</li>
-                    </ul>
-                </div>
-
-                
-
-                <h3 class="section-title">3. Dinámica analógica: "El filtro humano"</h3>
-                <div class="comp-box">
-                    <p><strong>Actividad:</strong> Colocarse en parejas (IA y Programador).</p><br>
-					<p><strong>El reto:</strong> Un alumno será la "IA" y el otro el "Programador".
-					<ul style="margin-left: 20px; margin-top: 10px; color: var(--text-muted);">
-                        <li>El programador le entrega a la "IA" una hoja con una cuadrícula de 10 x 10</li>
-                        <li>El programador no puede decir qué objeto es, solo puede dar instrucciones de coordenadas y color.</li>
-						<li>El programador da coordenadas en una cuadrícula de 10x10, por ejemplo:</li>
-                    </ul>
-                    <p class="mono" style="background: #000; padding: 10px; border-radius: 5px; margin-top:10px;">
-                        "Pinta de negro los píxeles (2,2), (2,3), (3,2), (3,3)"
-                    </p>
-                    <p style="margin-top: 10px;"><strong>Lección:</strong> Así procesa la IA la información: coordenada por coordenada, valor por valor.</p>
-                </div>
-
-                <h3 class="section-title">4. Práctica digital: Google Lens</h3>
-                <div class="comp-box">
-                    <p><strong>Experimento:</strong> Toma fotos a un objeto real vs. un dibujo del mismo objeto.</p>
-                    <button class="toggle-trigger" onclick="toggleElem('exp-vision')">¿Por qué falla en el dibujo?</button>
-                    <div id="exp-vision" class="hidden-section">
-                        <p style="color: var(--terminal-green)">Explicación: El dibujo carece de texturas, sombras y "puntos clave" que la IA aprendió de millones de fotos reales.</p>
-                    </div>
-                </div>
-
-                <h3 class="section-title">5. Reflexión y ética: ¿Puede la IA ser "ciega"?</h3>
-                <div class="comp-box" style="border-left: 4px solid #ff4b4b;">
-                    <p><strong>El sesgo visual:</strong> Si entrenamos una IA solo con fotos de piel clara, podría no reconocer manos de piel oscura. Esto se llama <strong>Sesgo</strong>.</p><br>
-					<p><strong>El peligro:</strong> ¿Qué pasaría si un auto autónomo no reconoce a una persona porque su ropa es de un color que la IA nunca vio en su entrenamiento?</p>
-                    <p style="margin-top:15px;"><strong>Conclusión:</strong> Ver es calcular. Los píxeles son números y las formas son patrones geométricos. La IA depende de la diversidad de datos que le entregamos.</p>
-                </div>
-
-                <div style="text-align: center; margin-top: 40px; padding: 20px; border: 1px dashed var(--main-accent); border-radius: 12px;">
-                    <p class="mono">PRÓXIMA CLASE: BLOQUE DE PROYECTOS 🚀</p>
-                </div>
-            `
-        };
-
-        function toggleElem(id) {
-            const el = document.getElementById(id);
-            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
-        }
-
         function openTab(evt, tabName) {
-            const contents = document.getElementsByClassName("tab-content");
-            for (let content of contents) content.classList.remove("active");
-            const buttons = document.getElementsByClassName("tab-btn");
-            for (let btn of buttons) btn.classList.remove("active");
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) tabcontent[i].classList.remove("active");
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) tablinks[i].classList.remove("active");
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
 
-        function showLesson(num) {
-            document.getElementById('lesson-content').innerHTML = lessons[num];
+        function showLesson(id) {
             document.getElementById('main-dashboard').style.display = 'none';
             document.getElementById('lesson-reader').style.display = 'block';
+            document.getElementById('lesson-content').innerHTML = lessons[id];
             window.scrollTo(0,0);
-            if(window.MathJax) MathJax.typeset();
         }
 
         function hideLesson() {
@@ -637,19 +157,71 @@
             document.getElementById('lesson-reader').style.display = 'none';
         }
 
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        const lessons = {
+            9: `
+                <div class="lesson-header">
+                    <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_09</p>
+                    <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 9: Prueba práctica 1 (Proyecto creativo) - "Cine Ético" 🎬</h2>
+                    <p style="margin-top: 20px; font-size: 1.1rem;"><strong>Objetivo:</strong> Aplicar habilidades de "Prompt Engineering" para generar una pieza gráfica conceptual que comunique un dilema ético de la IA.</p>
+                </div>
 
-        // Generar resto de clases bloqueadas
-        const gridT = document.getElementById('grid-theory');
-        for(let i=0; i<10; i++) {
-            gridT.innerHTML += `
-                <div class="class-card" style="opacity:0.5">
-                    <span class="mono">CLASE ${(i+7).toString().padStart(2,'0')}</span>
-                    <h3>Próximamente...</h3>
-                    <button class="btn-action" style="background:var(--border); color:var(--text-muted); cursor:not-allowed">Bloqueado</button>
-                </div>`;
-        }
+                <h3 class="section-title">📝 Preparación</h3>
+                <div class="comp-box">
+                    <p><strong>Herramientas:</strong> Acceso a una herramienta de IA generativa de imágenes.</p>
+                    <p><strong>Opciones recomendadas:</strong> Canva Magic Media, Microsoft Designer (Bing Image Creator).</p>
+                </div>
+
+                <h3 class="section-title">1. Introducción y desafío: "El 
+                    <span class="tooltip">brief<span class="tooltiptext">Documento informativo que contiene las instrucciones, objetivos y restricciones de un proyecto creativo.</span></span> del estudio"
+                </h3>
+                <div class="comp-box">
+                    <p><strong>La bienvenida:</strong> "Hoy no son estudiantes, son Directores Creativos de un estudio de cine".</p>
+                    <p><strong>El encargo:</strong> El estudio va a lanzar una película de ciencia ficción sobre los peligros y dilemas de la IA. Ustedes deben diseñar el póster oficial.</p>
+                    <p style="margin-top:15px;"><strong>Las reglas del póster:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Debe tener un título llamativo (inventado).</li>
+                        <li>Debe tener un <span class="tooltip">Tagline<span class="tooltiptext">Frase corta y memorable que resume la esencia o el mensaje de una película o marca.</span></span> (Ej: "Ella sabe lo que piensas antes que tú").</li>
+                        <li>La imagen central debe ser generada 100% por IA.</li>
+                        <li>El tema central debe ser ético: Sesgos, privacidad, Deepfakes, reemplazo laboral, etc.</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">2. Fase de pre-producción: Planificación</h3>
+                <p>Evitar generar "a lo loco". Rellenar una hoja rápida antes de tocar la herramienta:</p>
+                <div class="comp-box">
+                    <ul style="list-style:none;">
+                        <li>• <strong>Tema ético elegido:</strong> (Ej: El sesgo en la contratación laboral).</li>
+                        <li>• <strong>Título de la película:</strong> (Ej: "El Candidato Perfecto").</li>
+                        <li>• <strong>Estilo visual:</strong> (Ej: Cyberpunk, Noir, Minimalista).</li>
+                        <li>• <strong>Borrador del prompt:</strong> (Ej: "Un robot con traje de ejecutivo rechazando currículums humanos, estilo cyberpunk...").</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">3. Laboratorio de creación: "Luces, cámara, 
+                    <span class="tooltip">prompt<span class="tooltiptext">Instrucción o conjunto de palabras que se le da a una IA para que realice una tarea específica.</span></span>"
+                </h3>
+                <div class="comp-box">
+                    <p><strong>Generación e Iteración:</strong> No quedarse con la primera imagen. Refinar el prompt al menos 3 veces.</p>
+                    <p style="background: rgba(0, 242, 255, 0.1); padding: 10px; border-radius: 8px; margin-top:10px;">
+                        <strong>Fórmula:</strong> Sujeto + Acción + Entorno + Estilo
+                    </p>
+                </div>
+
+                <h3 class="section-title">4. La explicación del director y entrega</h3>
+                <div class="comp-box">
+                    <p><strong>Redacción de la sinopsis:</strong> Párrafo breve (5-8 líneas) justificando:</p>
+                    <ul style="margin-left: 20px; margin-top:10px;">
+                        <li>¿Cuál es el problema ético mostrado?</li>
+                        <li>¿Qué mensaje quieres dar al público?</li>
+                        <li>¿Por qué elegiste ese estilo visual?</li>
+                    </ul>
+                </div>
+
+                <div class="comp-box" style="border-left: 5px solid var(--terminal-green);">
+                    <p><strong>Formato de entrega:</strong> Archivo de imagen (JPG/PNG) + Texto de Sinopsis/Justificación.</p>
+                </div>
+            `
+        };
     </script>
 </body>
 </html>
