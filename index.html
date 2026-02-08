@@ -219,7 +219,7 @@
                     <span class="mono" style="color: var(--main-accent)">CLASE 08</span>
                     <h3 style="margin: 10px 0;">El futuro del trabajo y la IA</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Inspirar a los alumnos a ver la IA como un potenciador de sus capacidades humanas.</p>
-                    <button class="btn-action btn-main" onclick="showLesson(8)">Acceder</button>
+                    <button class="btn-action btn-main" onclick="showLesson(X)">Bloqueado</button>
                 </div>
             </div>
             </div>
@@ -227,7 +227,7 @@
     </div>
 
     <div class="app-container" id="lesson-reader">
-        <button class="tab-btn" style="margin-bottom: 30px;" onclick="hideLesson()">← Volver al Panel</button>
+        <button class="tab-btn" style="margin-bottom: 30px;" onclick="hideLesson()">← Volver al panel</button>
         
         <div id="lesson-content">
             </div>
@@ -769,7 +769,7 @@
         for(let i=0; i<8; i++) {
             gridT.innerHTML += `
                 <div class="class-card" style="opacity:0.5">
-                    <span class="mono">CLASE ${(i+8).toString().padStart(2,'0')}</span>
+                    <span class="mono">CLASE ${(i+9).toString().padStart(2,'0')}</span>
                     <h3>Próximamente...</h3>
                     <button class="btn-action" style="background:var(--border); color:var(--text-muted); cursor:not-allowed">Bloqueado</button>
                 </div>`;
