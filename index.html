@@ -85,6 +85,15 @@
         .image-box { text-align: center; }
         .image-box img { width: 100%; border-radius: 12px; border: 1px solid var(--border); }
 
+		  /* Tooltip text style */
+        .tooltip { position: relative; display: inline-block; border-bottom: 1px dotted var(--main-accent); color: var(--main-accent); cursor: help; }
+        .tooltip .tooltiptext {
+            visibility: hidden; width: 200px; background-color: #1e293b; color: #fff; text-align: center;
+            border-radius: 6px; padding: 10px; position: absolute; z-index: 1; bottom: 125%; left: 50%;
+            margin-left: -100px; opacity: 0; transition: opacity 0.3s; font-family: sans-serif; font-size: 0.85rem; border: 1px solid var(--main-accent);
+        }
+        .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
+
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(10px); z-index: 2000;
@@ -221,13 +230,19 @@
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Inspirar a los alumnos a ver la IA como un potenciador de sus capacidades humanas.</p>
                     <button class="btn-action btn-main" onclick="showLesson(8)">Acceder</button>
                 </div>
+				<div class="class-card">
+                    <span class="mono" style="color: var(--main-accent)">CLASE 09</span>
+                    <h3 style="margin: 10px 0;">Cine ético: Prueba Práctica 1</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Proyecto creativo: Diseña un póster de cine sobre dilemas éticos usando IA.</p>
+                    <button class="btn-action btn-main" onclick="showLesson(9)">Acceder</button>
+                </div>
             </div>
             </div>
         </div>
     </div>
 
     <div class="app-container" id="lesson-reader">
-        <button class="tab-btn" style="margin-bottom: 30px;" onclick="hideLesson()">← Volver al panel</button>
+        <button class="tab-btn" style="margin-bottom: 30px;" onclick="hideLesson()">← Volver al Panel</button>
         
         <div id="lesson-content">
             </div>
@@ -730,6 +745,69 @@
                 <h3 class="section-title">4. Reflexión final y cierre del bloque</h3>
                 <div class="comp-box" style="border-left: 5px solid var(--terminal-green); background: rgba(0, 255, 157, 0.05);">
                     <p style="font-size: 1.2rem; font-style: italic;">"La IA no te va a quitar el trabajo. Una persona que sepa usar la IA mejor que tú, sí lo hará. Ustedes ya tienen la ventaja porque ahora entienden cómo piensa la máquina".</p>
+                </div>
+            `,
+			9: `
+                <div class="lesson-header">
+                    <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_09</p>
+                    <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 9: Prueba práctica 1 (Proyecto creativo) - "Cine Ético" 🎬</h2>
+                    <p style="margin-top: 20px; font-size: 1.1rem;"><strong>Objetivo:</strong> Aplicar habilidades de "Prompt Engineering" para generar una pieza gráfica conceptual que comunique un dilema ético de la IA.</p>
+                </div>
+
+                <h3 class="section-title">📝 Preparación</h3>
+                <div class="comp-box">
+                    <p><strong>Herramientas:</strong> Acceso a una herramienta de IA generativa de imágenes.</p>
+                    <p><strong>Opciones recomendadas:</strong> Canva Magic Media, Microsoft Designer (Bing Image Creator).</p>
+                </div>
+
+                <h3 class="section-title">1. Introducción y desafío: "El 
+                    <span class="tooltip">brief<span class="tooltiptext">Documento informativo que contiene las instrucciones, objetivos y restricciones de un proyecto creativo.</span></span> del estudio"
+                </h3>
+                <div class="comp-box">
+                    <p><strong>La bienvenida:</strong> "Hoy no son estudiantes, son Directores Creativos de un estudio de cine".</p>
+                    <p><strong>El encargo:</strong> El estudio va a lanzar una película de ciencia ficción sobre los peligros y dilemas de la IA. Ustedes deben diseñar el póster oficial.</p>
+                    <p style="margin-top:15px;"><strong>Las reglas del póster:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Debe tener un título llamativo (inventado).</li>
+                        <li>Debe tener un <span class="tooltip">Tagline<span class="tooltiptext">Frase corta y memorable que resume la esencia o el mensaje de una película o marca.</span></span> (Ej: "Ella sabe lo que piensas antes que tú").</li>
+                        <li>La imagen central debe ser generada 100% por IA.</li>
+                        <li>El tema central debe ser ético: Sesgos, privacidad, Deepfakes, reemplazo laboral, etc.</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">2. Fase de pre-producción: Planificación</h3>
+                <p>Evitar generar "a lo loco". Rellenar una hoja rápida antes de tocar la herramienta:</p>
+                <div class="comp-box">
+                    <ul style="list-style:none;">
+                        <li>• <strong>Tema ético elegido:</strong> (Ej: El sesgo en la contratación laboral).</li>
+                        <li>• <strong>Título de la película:</strong> (Ej: "El Candidato Perfecto").</li>
+                        <li>• <strong>Estilo visual:</strong> (Ej: Cyberpunk, Noir, Minimalista).</li>
+                        <li>• <strong>Borrador del prompt:</strong> (Ej: "Un robot con traje de ejecutivo rechazando currículums humanos, estilo cyberpunk...").</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">3. Laboratorio de creación: "Luces, cámara, 
+                    <span class="tooltip">prompt<span class="tooltiptext">Instrucción o conjunto de palabras que se le da a una IA para que realice una tarea específica.</span></span>"
+                </h3>
+                <div class="comp-box">
+                    <p><strong>Generación e Iteración:</strong> No quedarse con la primera imagen. Refinar el prompt al menos 3 veces.</p>
+                    <p style="background: rgba(0, 242, 255, 0.1); padding: 10px; border-radius: 8px; margin-top:10px;">
+                        <strong>Fórmula:</strong> Sujeto + Acción + Entorno + Estilo
+                    </p>
+                </div>
+
+                <h3 class="section-title">4. La explicación del director y entrega</h3>
+                <div class="comp-box">
+                    <p><strong>Redacción de la sinopsis:</strong> Párrafo breve (5-8 líneas) justificando:</p>
+                    <ul style="margin-left: 20px; margin-top:10px;">
+                        <li>¿Cuál es el problema ético mostrado?</li>
+                        <li>¿Qué mensaje quieres dar al público?</li>
+                        <li>¿Por qué elegiste ese estilo visual?</li>
+                    </ul>
+                </div>
+
+                <div class="comp-box" style="border-left: 5px solid var(--terminal-green);">
+                    <p><strong>Formato de entrega:</strong> Archivo de imagen (JPG/PNG) + Texto de Sinopsis/Justificación.</p>
                 </div>
             `
         };
