@@ -113,7 +113,7 @@
             margin-top: 10px; margin-right: 10px; transition: 0.3s;
         }
 
-		.token { display: inline-block; padding: 4px 8px; margin: 2px; border-radius: 4px; background: rgba(0, 242, 255, 0.2); border: 1px solid var(--main-accent); color: var(--main-accent); font-family: 'Fira Code'; font-size: 0.9rem; }
+		    .token { display: inline-block; padding: 4px 8px; margin: 2px; border-radius: 4px; background: rgba(0, 242, 255, 0.2); border: 1px solid var(--main-accent); color: var(--main-accent); font-family: 'Fira Code'; font-size: 0.9rem; }
 		
         .toggle-trigger:hover { background: var(--main-accent); color: #000; }
 
@@ -122,6 +122,12 @@
             display: inline-flex; align-items: center; justify-content: center; cursor: pointer; 
             font-weight: bold; margin-left: 12px;
         }
+        
+        /* Timeline style for Class 10 */
+        .timeline { border-left: 2px solid var(--main-accent); margin: 20px 0; padding-left: 20px; }
+        .timeline-item { margin-bottom: 15px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -27px; top: 5px; width: 12px; height: 12px; background: var(--main-accent); border-radius: 50%; }
+        
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -194,25 +200,25 @@
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Diferencia entre la IA que cumple una sola función (Débil) y la IA que puede razonar (Fuerte).</p>
                     <button class="btn-action btn-main" onclick="showLesson(2)">Acceder</button>
                 </div>
-				<div class="class-card">
+				        <div class="class-card">
                     <span class="mono" style="color: var(--main-accent)">CLASE 03</span>
                     <h3 style="margin: 10px 0;">Evaluación</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Aplicaciones prácticas y dinámicas de los contenidos vistos en las clases 1 y 2</p>
                     <button class="btn-action btn-main" onclick="">Realizada</button>
                 </div>
-				<div class="class-card">
+				        <div class="class-card">
                     <span class="mono" style="color: var(--main-accent)">CLASE 04</span>
                     <h3 style="margin: 10px 0;">El detective de datos</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Comprende cómo las máquinas clasifican información con Machine Learning.</p>
                     <button class="btn-action btn-main" onclick="showLesson(4)">Acceder</button>
                 </div>
-				<div class="class-card">
+				        <div class="class-card">
                     <span class="mono" style="color: var(--main-accent)">CLASE 05</span>
                     <h3 style="margin: 10px 0;">La máquina de predicción (NLP)</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Entender porque la IA no "entiende" nuestro lenguaje.</p>
                     <button class="btn-action btn-main" onclick="showLesson(5)">Acceder</button>
                 </div>
-				<div class="class-card">
+				        <div class="class-card">
                     <span class="mono" style="color: var(--main-accent)">CLASE 06</span>
                     <h3 style="margin: 10px 0;">Ojos digitales (Visión)</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Comprender cómo las máquinas transforman luz y color en datos numéricos para procesar información.</p>
@@ -224,25 +230,30 @@
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Explora los dilemas morales, el origen de los prejuicios en la IA y la seguridad de tus datos.</p>
                     <button class="btn-action btn-main" onclick="showLesson(7)">Acceder</button>
                 </div>
-				<div class="class-card">
+				        <div class="class-card">
                     <span class="mono" style="color: var(--main-accent)">CLASE 08</span>
                     <h3 style="margin: 10px 0;">El futuro del trabajo y la IA</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Inspirar a los alumnos a ver la IA como un potenciador de sus capacidades humanas.</p>
                     <button class="btn-action btn-main" onclick="showLesson(8)">Acceder</button>
                 </div>
-				<div class="class-card">
+				        <div class="class-card">
                     <span class="mono" style="color: var(--main-accent)">CLASE 09</span>
                     <h3 style="margin: 10px 0;">Cine ético: Prueba Práctica 1</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Proyecto creativo: Diseña un póster de cine sobre dilemas éticos usando IA.</p>
                     <button class="btn-action btn-main" onclick="showLesson(9)">Acceder</button>
                 </div>
-            </div>
+                <div class="class-card">
+                    <span class="mono" style="color: var(--main-accent)">CLASE 10</span>
+                    <h3 style="margin: 10px 0;">Introducción a los Chatbots 🤖💬</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">De ELIZA a ChatGPT: Cómo funcionan los modelos de lenguaje y el arte del prompt.</p>
+                    <button class="btn-action btn-main" onclick="showLesson(10)">Acceder</button>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="app-container" id="lesson-reader">
-        <button class="tab-btn" style="margin-bottom: 30px;" onclick="hideLesson()">← Volver al Panel</button>
+        <button class="tab-btn" style="margin-bottom: 30px;" onclick="hideLesson()">← Volver al panel</button>
         
         <div id="lesson-content">
             </div>
@@ -442,7 +453,7 @@
                     <p style="margin-top:15px; font-weight:bold;">Próxima Clase: En la clase 3 tendremos nuestra primera prueba.</p>
                 </div>
             `,
-			4: `
+			      4: `
                 <div class="lesson-header">
                     <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_04</p>
                     <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 4: El Detective de datos (Machine Learning)</h2>
@@ -494,7 +505,7 @@
                     <p style="margin-top:15px; font-weight:bold;">Mensaje final: La IA solo sabe lo que nosotros le enseñamos.</p>
                 </div>
             `,
-			5: `
+			      5: `
                 <div class="lesson-header">
                     <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_05</p>
                     <h2 style="font-size: 2rem;">Clase 5: La máquina de predicción (NLP)</h2>
@@ -558,7 +569,7 @@
                     <p style="margin-top: 15px; font-style: italic; color: var(--text-muted);">Tarea: Mira las 3 sugerencias de tu teclado móvil hoy. Eso es una mini IA de predicción trabajando para ti.</p>
                 </div>
             `,
-			6: `
+			      6: `
                 <div class="lesson-header">
                     <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_06</p>
                     <h2 style="font-size: 2.2rem;">Clase 6: Ojos digitales (Visión por computadora)</h2>
@@ -636,7 +647,7 @@
                     <p class="mono">PRÓXIMA CLASE: BLOQUE DE PROYECTOS 🚀</p>
                 </div>
             `,
-			7: `
+			      7: `
                 <div class="lesson-header">
                     <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_07</p>
                     <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 7: Ética, Sesgos y Privacidad</h2>
@@ -688,7 +699,7 @@
                     <p><strong>Pregunta de salida:</strong> "Si pudieras borrar una sola capacidad de la IA para hacer el mundo más seguro, ¿cuál borrarías?"</p>
                 </div>
             `,
-			8: `
+			      8: `
                 <div class="lesson-header">
                     <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_08</p>
                     <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 8: El futuro del trabajo y la IA 🚀</h2>
@@ -747,7 +758,7 @@
                     <p style="font-size: 1.2rem; font-style: italic;">"La IA no te va a quitar el trabajo. Una persona que sepa usar la IA mejor que tú, sí lo hará. Ustedes ya tienen la ventaja porque ahora entienden cómo piensa la máquina".</p>
                 </div>
             `,
-			9: `
+		        9: `
                 <div class="lesson-header">
                     <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_09</p>
                     <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 9: Prueba práctica 1 (Proyecto creativo) - "Cine Ético" 🎬</h2>
@@ -809,6 +820,64 @@
                 <div class="comp-box" style="border-left: 5px solid var(--terminal-green);">
                     <p><strong>Formato de entrega:</strong> Archivo de imagen (JPG/PNG) + Texto de Sinopsis/Justificación.</p>
                 </div>
+            `,
+            10: `
+                <div class="lesson-header">
+                    <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_10</p>
+                    <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 10: Introducción a los Chatbots 🤖💬</h2>
+					<p style="margin-top: 20px; font-size: 1.1rem;"><strong>Objetivo:</strong> Comprender la evolución tecnológica y el funcionamiento lógico de los chatbots para interactuar con ellos de forma crítica, creativa y consciente de sus limitaciones.</p>
+                </div>
+
+                <h3 class="section-title">1. Evolución: De la terapia de ELIZA a la magia de ChatGPT</h3>
+                <div class="comp-box">
+                    <p><strong>Historia</strong></p>    
+                    <div class="timeline">
+						<div class="timeline-item"><strong>1966 - ELIZA:</strong> Presentamos el primer chatbot que simulaba ser un psicólogo. Funcionaba con "trucos" de espejo (si decías "Me duele la cabeza", ella respondía "¿Por qué dices que te duele la cabeza?"). No entendía nada, solo repetía.</div>
+                        <div class="timeline-item"><strong>1972 - PARRY:</strong> El "primo" de ELIZA. Simulaba a un paciente con esquizofrenia paranoica.</div>
+						<div class="timeline-item"><strong>1995 - A.L.I.C.E:</strong> Utilizaba un formato llamado AIML (lenguaje de marcado de inteligencia artificial). Fue mucho más compleja y sirvió de inspiración para la película Her.</div>
+						<div class="timeline-item"><strong>2001 - SmarterChild:</strong> Vivía en MSN Messenger y AOL. Podías pedirle el clima, resultados deportivos o simplemente insultarlo (y él te regañaba).</div>
+						<div class="timeline-item"><strong>2011 - Siri:</strong> Apple lanza Siri. La IA deja de ser solo texto y empieza a tener voz.(</div>
+                        <div class="timeline-item"><strong>2014 - Alexa y Cortana:</strong> Amazon y Microsoft entran en la carrera. La IA se mete en nuestras casas a través de altavoces inteligentes.</div>
+                        <div class="timeline-item"><strong>2020 - ChatGPT-3:</strong> OpenAI lanza un modelo con 175 mil millones de parámetros. Por primera vez, la IA escribe ensayos que parecen humanos.</div>
+						<div class="timeline-item"><strong>2022 - ChatGPT-3 y la era de los LLM:</strong> Se abre al público masivo. La IA se vuelve viral porque puede programar, escribir poemas y explicar física cuántica en segundos.</div>
+						<div class="timeline-item"><strong>2023+:</strong> Aparecen GPT-4, Claude y Gemini. Ya no solo leen texto; pueden ver imágenes, escuchar tu voz y razonar con lógica matemática compleja.</div>
+                    </div>
+                </div>
+
+				<p class="comp-box" style="border-left: 5px solid var(--boost-accent);"><strong>El salto a los LLM:</strong> Por ejemplo, ChatGPT no sigue reglas fijas. Es un modelo que leyó casi todo internet para aprender cómo hablamos los humanos.</p>
+                <p class="comp-box" style="border-left: 5px solid var(--boost-accent);" style="margin-top:15px;"><strong>¿Qué es un LLM?</strong> Es como un autocorrector de celular gigante. Su único trabajo es predecir matemáticamente cuál es la siguiente palabra (token) más lógica en una oración basándose en el contexto previo:</p>
+                <p style="text-align:center; font-size: 1.2rem; margin: 20px 0;">$$P(w_{n+1} | w_1, w_2, ..., w_n)$$</p>
+                    
+                <img src="img/llm.webp" alt="Modelo LLM" width="500" heigth="500" style="display: block; margin: 0 auto;">
+
+				
+
+                <h3 class="section-title">2. Interacción guiada: El cerebro colectivo</h3>
+                <div class="comp-box">
+                    <p><strong>Dinámica:</strong> Abrir la interfaz de Chatbot (ChatGPT, Claude o Gemini).</p>
+                    <p><strong>El reto de la clase:</strong> En lugar de hacer preguntas simples, crear un "Super Prompt" colaborativo.</p>
+                    <ul style="margin-left: 20px; margin-top:10px;">
+                        <li><strong>Roleplay:</strong> Pedirle a la IA que actúe como un personaje histórico (ej. Cristóbal Colón o Marie Curie) y entrevistarla.</li>
+                        <li><strong>Prueba de lógica:</strong> Plantear un acertijo complejo para ver como razona.</li>
+                        <li><strong>Creatividad:</strong> Pedirle que escriba una canción de rap sobre la fotosíntesis, cambiando el estilo a mitad de camino.</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">3. Análisis: El espejo de turing</h3>
+                <div class="comp-box">
+                    <p><strong>Debate grupal:</strong> Identificar los "puntos de ruptura"</p><br>
+                    <ul style="margin-left: 20px;">
+                        <li>¿Cuándo pareció humano? (Humor, fluidez).</li>
+                        <li>¿Cuándo sonó como máquina? (Respuestas largas, cortesía excesiva).</li>
+                    </ul>
+                    <p style="margin-top:15px;"><strong>Concepto de "Alucinación":</strong> La IA a veces miente con mucha seguridad porque prioriza la probabilidad sobre la verdad.</p>
+                </div>
+
+                <h3 class="section-title">4. Reflexión y cierre</h3>
+                <div class="comp-box" style="border-left: 5px solid var(--terminal-green);">
+                    <p><strong>Actividad:</strong> Escribir una pregunta que una IA jamás podrá responder correctamente (sentimientos o experiencias subjetivas).</p>
+                    <p style="margin-top:10px; font-style: italic;">"Los chatbots son herramientas poderosas, pero nosotros somos quienes damos el sentido y la intención".</p>
+                </div>
             `
         };
 
@@ -844,10 +913,10 @@
 
         // Generar resto de clases bloqueadas
         const gridT = document.getElementById('grid-theory');
-        for(let i=0; i<8; i++) {
+        for(let i=0; i<6; i++) {
             gridT.innerHTML += `
                 <div class="class-card" style="opacity:0.5">
-                    <span class="mono">CLASE ${(i+9).toString().padStart(2,'0')}</span>
+                    <span class="mono">CLASE ${(i+11).toString().padStart(2,'0')}</span>
                     <h3>Próximamente...</h3>
                     <button class="btn-action" style="background:var(--border); color:var(--text-muted); cursor:not-allowed">Bloqueado</button>
                 </div>`;
