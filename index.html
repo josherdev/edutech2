@@ -81,7 +81,11 @@
         .section-title { color: var(--boost-accent); margin: 35px 0 15px; font-family: 'Fira Code'; font-size: 1.5rem; }
         .comp-box { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 30px; border-radius: 16px; margin-bottom: 25px; }
 
-        .image-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
+        .ai-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
+        .ai-table th, .ai-table td { padding: 12px; border: 1px solid var(--border); text-align: left; }
+        .ai-table th { background: rgba(0, 242, 255, 0.1); color: var(--main-accent); }
+		
+		.image-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
         .image-box { text-align: center; }
         .image-box img { width: 100%; border-radius: 12px; border: 1px solid var(--border); }
 
@@ -244,9 +248,15 @@
                 </div>
                 <div class="class-card">
                     <span class="mono" style="color: var(--main-accent)">CLASE 10</span>
-                    <h3 style="margin: 10px 0;">Introducción a los Chatbots 🤖💬</h3>
+                    <h3 style="margin: 10px 0;">Introducción a los Chatbots</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">De ELIZA a ChatGPT: Cómo funcionan los modelos de lenguaje y el arte del prompt.</p>
                     <button class="btn-action btn-main" onclick="showLesson(10)">Acceder</button>
+                </div>
+				<div class="class-card">
+                    <span class="mono" style="color: var(--main-accent)">CLASE 11</span>
+                    <h3 style="margin: 10px 0;">Tipos de chatbots y modelos </h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">La batalla de los gigantes, multimodalidad y práctica comparativa.</p>
+                    <button class="btn-action btn-main" onclick="showLesson(11)">Acceder</button>
                 </div>
             </div>
         </div>
@@ -836,7 +846,7 @@
                         <div class="timeline-item"><strong>1972 - PARRY:</strong> El "primo" de ELIZA. Simulaba a un paciente con esquizofrenia paranoica.</div>
 						<div class="timeline-item"><strong>1995 - A.L.I.C.E:</strong> Utilizaba un formato llamado AIML (lenguaje de marcado de inteligencia artificial). Fue mucho más compleja y sirvió de inspiración para la película Her.</div>
 						<div class="timeline-item"><strong>2001 - SmarterChild:</strong> Vivía en MSN Messenger y AOL. Podías pedirle el clima, resultados deportivos o simplemente insultarlo (y él te regañaba).</div>
-						<div class="timeline-item"><strong>2011 - Siri:</strong> Apple lanza Siri. La IA deja de ser solo texto y empieza a tener voz.(</div>
+						<div class="timeline-item"><strong>2011 - Siri:</strong> Apple lanza Siri. La IA deja de ser solo texto y empieza a tener voz.</div>
                         <div class="timeline-item"><strong>2014 - Alexa y Cortana:</strong> Amazon y Microsoft entran en la carrera. La IA se mete en nuestras casas a través de altavoces inteligentes.</div>
                         <div class="timeline-item"><strong>2020 - ChatGPT-3:</strong> OpenAI lanza un modelo con 175 mil millones de parámetros. Por primera vez, la IA escribe ensayos que parecen humanos.</div>
 						<div class="timeline-item"><strong>2022 - ChatGPT-3 y la era de los LLM:</strong> Se abre al público masivo. La IA se vuelve viral porque puede programar, escribir poemas y explicar física cuántica en segundos.</div>
@@ -878,6 +888,95 @@
                     <p><strong>Actividad:</strong> Escribir una pregunta que una IA jamás podrá responder correctamente (sentimientos o experiencias subjetivas).</p>
                     <p style="margin-top:10px; font-style: italic;">"Los chatbots son herramientas poderosas, pero nosotros somos quienes damos el sentido y la intención".</p>
                 </div>
+            `,
+			11: `
+                <div class="lesson-header">
+                    <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_11</p>
+                    <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 11: Tipos de chatbots y modelos ⚔️</h2>
+					<p style="margin-top: 20px; font-size: 1.1rem;"><strong>Objetivo:</strong> Analizar y contrastar las fortalezas, arquitecturas y enfoques éticos de los principales modelos de IA (GPT, Claude y Gemini), evaluando su desempeño en entornos multimodales para desarrollar el criterio de selección de la herramienta más adecuada según la tarea propuesta.</p>
+                </div>
+
+                <h3 class="section-title">1. La batalla de los gigantes y la multimodalidad</h3>
+                <div class="comp-box">
+                    <p><strong>Diferencias entre modelos:</strong></p><br>
+                    <ul style="margin-left: 20px; margin-bottom: 15px;">
+                        <li><strong>GPT:</strong> El pionero, conocido por su versatilidad y razonamiento lógico.</li>
+                        <li><strong>Claude:</strong> Enfocado en la seguridad ética, respuestas más "humanas" y redacción literaria.</li>
+                        <li><strong>Gemini:</strong> La potencia de Google, diseñado para ser multimodal desde su nacimiento (muy rápido analizando videos o archivos de Drive).</li>
+                    </ul>
+                    <p><strong>¿Qué es la IA multimodal?</strong> La IA ya no solo "lee"; ahora puede "ver" fotos, "escuchar" audios y "crear" videos.</p><br>
+                    <p>• <strong>IA de texto:</strong> (LLMs) como los mencionados arriba.</p>
+                    <p>• <strong>IA de imagen:</strong> (Difusión) como Midjourney o DALL-E.</p>
+                    <p>• <strong>IA de audio:</strong> Modelos de clonación de voz o generación de música (Suno/Udio).</p>
+                </div>
+
+                <div style="overflow-x: auto;">
+                    <table class="ai-table">
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th>ChatGPT (OpenAI)</th>
+                                <th>Claude (Anthropic)</th>
+                                <th>Gemini (Google)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Modelo Principal</td>
+                                <td>GPT-5 / GPT-4o</td>
+                                <td>Claude 3.5 / 4</td>
+                                <td>Gemini 3 (Pro/Ultra)</td>
+                            </tr>
+                            <tr>
+                                <td>Ventana de Contexto</td>
+                                <td>~128k - 200k tokens</td>
+                                <td>200k tokens</td>
+                                <td>Hasta 2 millones de tokens</td>
+                            </tr>
+                            <tr>
+                                <td>Punto Fuerte</td>
+                                <td>Versatilidad y Ecosistema</td>
+                                <td>Escritura Natural y Código</td>
+                                <td>Análisis de Datos Masivos</td>
+                            </tr>
+                            <tr>
+                                <td>Razonamiento Complejo</td>
+                                <td>Muy alto (o1/o2 series)</td>
+                                <td>Excelente (Artifacts)</td>
+                                <td>Deep Think Mode (Iterativo)</td>
+                            </tr>
+                            <tr>
+                                <td>Multimodalidad</td>
+                                <td>Nativa (Voz, Vision, DALL-E)</td>
+                                <td>Excelente en Vision</td>
+                                <td>Líder en Video y Audio largo</td>
+                            </tr>
+                            <tr>
+                                <td>Integración</td>
+                                <td>Microsoft / Apple / Custom GPTs</td>
+                                <td>Enfocado en Privacidad/Empresa</td>
+                                <td>Google Workspace (Docs, Gmail)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="section-title">2. Práctica comparativa: "Cata de IAs con <a href="https://arena.ai/es" target="_blank" style="font-weight: bold; color: var(--main-accent); text-decoration: none;">ARENA AI</a>"</h3>
+                <div class="comp-box">
+                    <p><strong>El experimento:</strong> Se les entrega una lista de 3 prompts de prueba que deben ingresar en ambos modelos simultáneamente:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Creatividad:</strong> "Escribe un poema sobre un robot que olvida su memoria en Marte".</li>
+                        <li><strong>Lógica/Matemática:</strong> Un acertijo tipo: "Si tengo 3 manzanas y me quitas 2, ¿cuántas manzanas tienes tú?".</li>
+                        <li><strong>Resumen/Análisis:</strong> Pegar un texto largo y pedir los 3 puntos más importantes.</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Hoja de evaluación:</strong> Comparar Precisión, Tono (naturalidad) y Formato (organización).</p>
+                </div>
+
+                <h3 class="section-title">3. Debate y análisis: ¿Cuál es el mejor?</h3>
+                <div class="comp-box">
+                    <p><strong>Conclusión colectiva:</strong> No existe un "mejor" modelo absoluto, sino que depende de la tarea.</p>
+                    <p><strong>Reflexión sobre el sesgo de modelo:</strong> Cada empresa tiene sus propias reglas éticas; observar cómo eso afecta la respuesta (algunos modelos son más "tímidos" o "restringidos" que otros).</p>
+                </div>
             `
         };
 
@@ -913,10 +1012,10 @@
 
         // Generar resto de clases bloqueadas
         const gridT = document.getElementById('grid-theory');
-        for(let i=0; i<6; i++) {
+        for(let i=0; i<5; i++) {
             gridT.innerHTML += `
                 <div class="class-card" style="opacity:0.5">
-                    <span class="mono">CLASE ${(i+11).toString().padStart(2,'0')}</span>
+                    <span class="mono">CLASE ${(i+12).toString().padStart(2,'0')}</span>
                     <h3>Próximamente...</h3>
                     <button class="btn-action" style="background:var(--border); color:var(--text-muted); cursor:not-allowed">Bloqueado</button>
                 </div>`;
