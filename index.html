@@ -105,9 +105,24 @@
         }
         .modal-content {
             background: var(--bg-card); border: 2px solid var(--main-accent); border-radius: 24px;
+			border: 2px solid var(--main-accent); width: 80%; max-width: 800px;
             max-width: 800px; width: 100%; max-height: 85vh; overflow-y: auto; padding: 45px; position: relative;
         }
         .close-modal { position: absolute; top: 25px; right: 25px; color: var(--text-muted); cursor: pointer; background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 8px 15px; border-radius: 8px; }
+
+		/* Estilos para el Popup de Alan Turing */
+        .modal1 {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content1 {
+            background-color: var(--bg-card); margin: 5% auto; padding: 30px;
+            border: 2px solid var(--main-accent); width: 80%; max-width: 800px;
+            border-radius: 20px; max-height: 80vh; overflow-y: auto;
+        }
+        .close-modal1 { color: var(--text-muted); float: right; font-size: 28px; cursor: pointer; }
+        .close-modal1:hover { color: var(--main-accent); }
 
         .hidden-section { display: none; margin-top: 15px; animation: fadeIn 0.4s ease; }
         .toggle-trigger {
@@ -173,6 +188,27 @@
                 <p>Alan Turing decía: "Si una máquina se comporta de forma inteligente, ¿importa realmente si es inteligente o si solo está imitando?". Él no quería discutir si las máquinas tenían "alma" o "sentimientos", sino si podían actuar de forma indistinguible de nosotros.</p>
                 <h3 style="color: var(--main-accent); margin: 20px 0 10px;">5. ¿Hoy en día alguien lo ha logrado?</h3>
                 <p>Durante décadas, ninguna IA pudo engañar a los expertos. Pero hoy, con modelos como ChatGPT, el test se ha vuelto muy difícil para nosotros. A veces, las IAs son tan buenas escribiendo que pasamos el test sin darnos cuenta todos los días en internet.</p>
+            </div>
+        </div>
+    </div>
+
+	<div id="turingModal" class="modal1">
+        <div class="modal-content1">
+            <span class="close-modal1" onclick="closeTuring()">&times;</span>
+            <h2 style="color: var(--main-accent); margin-bottom: 20px;">🕵️‍♂️ Reto Nivel Experto: El Laberinto de Turing</h2>
+            <p style="font-style: italic; color: var(--text-muted); margin-bottom: 20px;">Instrucciones: El siguiente texto parece una biografía impecable, pero contiene 10 errores sutiles (alucinaciones de datos). Tu objetivo es actuar como un Fact-Checker profesional.</p>
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; font-size: 0.95rem; line-height: 1.8;">
+                <h4 style="color: var(--terminal-green)">Alan Turing: El Arquitecto de la Inteligencia Universal</h4><br>
+                Alan Mathison Turing nació el 23 de junio de 1912 en Londres. Su genialidad fue evidente desde la adolescencia; sin embargo, no fue un estudiante ejemplar en todas las materias debido a su obsesión por la ciencia pura. Tras terminar la secundaria, ingresó al prestigioso Trinity College de Cambridge para estudiar matemáticas, donde se graduó con honores.<br><br>
+                <strong>La base de la computación moderna</strong><br>
+                En 1936, Turing publicó un artículo revolucionario titulado "Sobre los números digitales, con una aplicación al problema de decisión". En este texto, describió una máquina hipotética capaz de realizar cualquier cálculo matemático, sentando las bases de lo que hoy conocemos como "algoritmo". Poco después, se trasladó a la Universidad de Harvard para completar su doctorado bajo la supervisión de Alonzo Church.<br><br>
+                <strong>La Guerra Silenciosa en Bletchley Park</strong><br>
+                Al estallar la Segunda Guerra Mundial, Turing se unió al equipo de criptografía en Bletchley Park, ubicado en el condado de Oxfordshire. Su misión era descifrar la máquina de cifrado alemana Enigma-G, utilizada por la marina nazi. Para romper el código, Turing perfeccionó un dispositivo electromecánico llamado "Victory", que permitía procesar miles de combinaciones por segundo.<br><br>
+                El éxito de su equipo fue tal que el propio Rey Jorge VI afirmó que Turing y sus colegas habían sido "las gallinas que pusieron los huevos de oro sin cacarear", salvando millones de vidas. Además de su labor intelectual, Turing era un atleta de élite; casi logra clasificar para la maratón de los Juegos Olímpicos de Helsinki 1952.<br><br>
+                <strong>La Inteligencia Artificial y el Test de Turing</strong><br>
+                En 1950, Turing publicó su famoso ensayo "Maquinaria de computación e inteligencia" en la reconocida revista Nature. Allí propuso el "Juego de la Imitación", conocido hoy como el Test de Turing. En el artículo, sugirió que para el año 1990, las computadoras tendrían suficiente memoria para engañar al 30% de los jueces humanos.<br><br>
+                <strong>Un final injusto y el reconocimiento póstumo</strong><br>
+                A pesar de sus servicios a la humanidad, Turing fue procesado en 1952 por su homosexualidad y condenado a un tratamiento de castración química. Falleció en 1954 por envenenamiento con cianuro. El mundo tardó décadas en reconocer su valor. En el año 2009, la Reina Isabel II le otorgó un indulto real póstumo. Para honrar su memoria, la Asociación de Maquinaria de Computación (ACM) creó el Premio Turing en 1954, el cual es considerado hoy como el "Nobel de la Informática".
             </div>
         </div>
     </div>
@@ -263,6 +299,12 @@
                     <h3 style="margin: 10px 0;">El arte del PROMPT</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">La fórmula maestra de la ingeniería de instrucciones y retos creativos para obtener resultados deseados.</p>
                     <button class="btn-action btn-main" onclick="showLesson(12)">Acceder</button>
+                </div>
+				<div class="class-card">
+                    <span class="mono" style="color: var(--main-accent)">CLASE 13</span>
+                    <h3 style="margin: 10px 0;">IA para investigaciones</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Pensamiento crítico e integridad académica contra las alucinaciones.</p>
+                    <button class="btn-action btn-main" onclick="showLesson(13)">Acceder</button>
                 </div>
             </div>
         </div>
@@ -1039,6 +1081,64 @@
                     <p><em>"La IA es un espejo de tu capacidad para comunicarte. Si le pides algo vago, recibes algo vago. Si eres preciso, eres poderoso".</em></p>
                     <p style="margin-top: 15px;"><strong>Actividad de salida:</strong> Cada alumno debe escribir un <strong>"Prompt de Vida"</strong>: Una instrucción que les sirva para estudiar una materia difícil mañana mismo.</p>
                 </div>
+            `,
+			13: `
+                <div class="lesson-header">
+                    <p class="mono" style="color: var(--main-accent)">CURSO_IA_NIVEL_13</p>
+                    <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 13: IA para investigaciones (El copiloto) 🔍📚</h2><br>
+					<p><strong>Objetivo:</strong> Fomentar el pensamiento crítico y la integridad académica mediante el uso de la Inteligencia Artificial como una herramienta de apoyo (copiloto) en la investigación, desarrollando habilidades para detectar errores factuales (alucinaciones) y establecer protocolos personales de verificación de datos.</p>
+                </div>
+
+                <h3 class="section-title">1. El copiloto vs. El tramposo</h3>
+                <div class="comp-box">
+					<ul style="margin-left: 20px; margin-bottom: 15px;">
+						<li>Diferenciar entre usar la IA para evitar pensar (Copy-Paste) y usarla para pensar mejor.</li>
+						<li>Cómo <strong>"SÍ"</strong> usarla (El copiloto):</li>
+                    	<ul style="margin-left: 40px; margin-bottom: 15px;">
+                        	<li>Esquematizar: "Tengo estas notas, ayúdame a crear un índice para mi ensayo".</li>
+                        	<li>Lluvia de ideas: "Dame 5 subtemas interesantes sobre el cambio climático".</li>
+                        	<li>Explicación de conceptos: "Explícame la Ley de Ohm como si fuera un dibujo animado".</li>
+						</ul>
+                    </ul>
+					<ul style="margin-left: 20px; margin-bottom: 15px;">
+						<li>Cómo <strong>"NO"</strong> usarla (El tramposo):</li>
+                    	<ul style="margin-left: 40px; margin-bottom: 15px;">
+                        	<li>Copy-Paste: Pedirle que escriba el ensayo completo sin revisión.</li>
+                        	<li>Confiar ciegamente en fechas, nombres de leyes o citas bibliográficas que la IA proporcione.</li>
+						</ul>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">2. Detective de mentiras: El gran engaño de la IA</h3>
+                <div class="comp-box">
+                    <p>Revisar el siguiente texto generado por IA para encontrar las posibles alucinaciones:</p><br>
+					<div class="comp-box" style="border-left: 5px solid var(--main-accent)">
+						<button onclick="openTuring()" style="background: none; border: none; color: var(--main-accent); cursor: pointer; text-decoration: none; font-size: 1.1rem; margin: 5px 0;"> <strong>ALAN TURING</strong>
+                    	</button>
+                	</div>
+                    
+                    <p style="margin-top: 10px;"><strong>La actividad:</strong> En parejas, usar Google para encontrar los 10 errores. <br>
+					<em><strong>Lección:</strong> "La IA no sabe la verdad, solo predice la palabra más probable".</em></p>
+                </div>
+
+
+                <h3 class="section-title">3. Taller: Mi guía de verificación de datos</h3>
+                <div class="comp-box">
+				<p><strong>El reto:</strong> Los alumnos deben crear un pequeño manual o "check-list" (lista de verificación) para sus futuros trabajos escolares.</p>
+                    <p><strong>Check-list para futuros trabajos:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>¿Verifiqué fechas y nombres en fuentes oficiales?</li>
+                        <li>¿Existen realmente las fuentes bibliográficas citadas?</li>
+                        <li>¿Escribí el texto con mis propias palabras?</li>
+                        <li>¿Usé la IA para entender o solo para rellenar la hoja?</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">4. Reflexión y cierre</h3>
+                <div class="comp-box" style="background: rgba(0, 255, 157, 0.05)">
+                    <p><strong>Debate:</strong> "¿Por qué es más peligrosa una mentira que parece verdad que una mentira obvia?"</p>
+                    <p style="margin-top: 10px;"><strong>Conclusión:</strong> La IA es un copiloto que a veces sueña; tú eres el conductor y siempre debes tener las manos en el volante.</p>
+                </div>
             `
         };
 
@@ -1072,12 +1172,15 @@
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
+		function openTuring() { document.getElementById('turingModal').style.display = 'block'; }
+        function closeTuring() { document.getElementById('turingModal').style.display = 'none'; }
+
         // Generar resto de clases bloqueadas
         const gridT = document.getElementById('grid-theory');
-        for(let i=0; i<4; i++) {
+        for(let i=0; i<3; i++) {
             gridT.innerHTML += `
                 <div class="class-card" style="opacity:0.5">
-                    <span class="mono">CLASE ${(i+13).toString().padStart(2,'0')}</span>
+                    <span class="mono">CLASE ${(i+14).toString().padStart(2,'0')}</span>
                     <h3>Próximamente...</h3>
                     <button class="btn-action" style="background:var(--border); color:var(--text-muted); cursor:not-allowed">Bloqueado</button>
                 </div>`;
