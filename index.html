@@ -89,6 +89,15 @@
         .image-box { text-align: center; }
         .image-box img { width: 100%; border-radius: 12px; border: 1px solid var(--border); }
 
+		 /* Estilos para Boletos (Tickets) */
+        details { background: rgba(188, 19, 254, 0.05); border: 1px solid var(--boost-accent); border-radius: 12px; margin-bottom: 15px; }
+        summary { padding: 15px; cursor: pointer; font-weight: 700; color: var(--boost-accent); list-style: none; display: flex; align-items: center; gap: 10px; }
+        summary::before { content: '📁'; }
+        details[open] summary::before { content: '📂'; }
+        .ticket-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; padding: 20px; }
+        .ticket { background: #0f172a; border: 1px dashed var(--boost-accent); padding: 20px; border-radius: 10px; }
+        .ticket-title { color: var(--main-accent); font-weight: 800; margin-bottom: 10px; display: block; }
+
 		  /* Tooltip text style */
         .tooltip { position: relative; display: inline-block; border-bottom: 1px dotted var(--main-accent); color: var(--main-accent); cursor: help; }
         .tooltip .tooltiptext {
@@ -305,6 +314,12 @@
                     <h3 style="margin: 10px 0;">IA para investigaciones</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Pensamiento crítico e integridad académica contra las alucinaciones.</p>
                     <button class="btn-action btn-main" onclick="showLesson(13)">Acceder</button>
+                </div>
+				<div class="class-card" style="border-color: var(--boost-accent);">
+                    <span class="mono" style="color: var(--boost-accent)">CLASE 14</span>
+                    <h3 style="margin: 10px 0;">Prueba práctica final</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Validación de triangulación de datos y fuentes primarias.</p>
+                    <button class="btn-action btn-main" style="background: var(--boost-accent);" onclick="showLesson(14)">Iniciar reto</button>
                 </div>
             </div>
         </div>
@@ -1139,6 +1154,59 @@
                     <p><strong>Debate:</strong> "¿Por qué es más peligrosa una mentira que parece verdad que una mentira obvia?"</p>
                     <p style="margin-top: 10px;"><strong>Conclusión:</strong> La IA es un copiloto que a veces sueña; tú eres el conductor y siempre debes tener las manos en el volante.</p>
                 </div>
+            `,
+			14: `
+                <div class="lesson-header">
+                    <p class="mono" style="color: var(--boost-accent)">FINAL_CHALLENGE_2026</p>
+                    <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 14: Prueba práctica final (El gran reto) 🏆</h2><br>
+                    <p><strong>Objetivo:</strong> Validar la capacidad del estudiante para utilizar modelos de lenguaje como herramientas de estructuración lógica sin comprometer la veracidad de los hechos, mediante la triangulación de datos entre la IA y fuentes académicas primarias.</p>
+                </div>
+
+                <h3 class="section-title">1. Instrucciones del "Gran reto"</h3>
+                <div class="comp-box">
+                    <p><strong>El desafío:</strong> Se entrega a cada alumno (o pareja) un sobre o una tarjeta con un tema complejo.</p>
+                    <p><strong>Ejemplos:</strong> "El impacto de la penicilina en la Segunda Guerra Mundial", "La paradoja de Fermi", "El descubrimiento de la estructura del ADN (y el papel de Rosalind Franklin)".</p><br>
+                    <p style="color: var(--terminal-green)"><strong>La regla de oro:</strong> Se permite el uso de IA al 100% para estructurar, pero está prohibido al 100% para afirmar hechos sin una fuente real que lo respalde.</p>
+                </div>
+
+                <h3 class="section-title">2. Fase de laboratorio: Simulacro de investigación</h3>
+                
+                <div class="comp-box">
+                    <p><strong>A. Estructura y preguntas:</strong> Usar el chatbot para generar un esquema y 3 preguntas clave 3 que agoten o abarquen el tema.<br>
+					<div style="text-align: center; margin-top: 40px; padding: 20px; border: 1px dashed var(--main-accent); border-radius: 12px;">
+                    	<em><strong>Prompt sugerido:</strong> "Actúa como un tutor de investigación. Dado el tema X, ayúdame a crear un esquema de 3 puntos y genera las 3 preguntas más importantes que debo responder para entenderlo a fondo"</em></p>
+                	</div><br>
+					
+                    <p><strong>B. La caza de la verdad:</strong> Aquí es donde la IA se apaga. Deben ir a fuentes reales para verificar cada dato sugerido. Importante: Si la IA sugirió un dato en el paso A, deben encontrarlo en una fuente real. Si no lo encuentran, el dato se descarta.</p><br>
+					<ul style="margin-left:20px; list-style-type: none;">
+						<li>Pueden utilizar <a href="https://scholar.google.es/" target="_blank" style="font-weight: bold; color: #ff4b4b; text-decoration: none;">Google Académico</a> o <a href="https://es.wikipedia.org/wiki/Wikipedia:Portada" target="_blank" style="font-weight: bold; color: #ff4b4b; text-decoration: none;">Wikipedia</a> </li>  
+					</ul><br>
+                    <p><strong>C. Redacción y citación:</strong> Deben incluir una sección final de "Fuentes" donde listen los sitios reales consultados y una "Declaración de IA" (ej: "Se utilizó ChatGPT para estructurar el índice y formular preguntas clave")</p>
+                </div>
+
+                <h3 class="section-title">3. Boletos de investigación</h3>
+                <details>
+                    <summary>Ver Boletos del "Gran Reto" (Desplegar)</summary>
+                    <div class="ticket-grid">
+                        <div class="ticket"><span class="ticket-title">Boleto 1: Medicina y Azar</span><strong>Tema:</strong> La Penicilina.<br><strong>Misión:</strong> ¿Cómo un hongo cambió la medicina?<br><strong>Uso IA:</strong> Impacto en la 2da Guerra Mundial.</div>
+                        <div class="ticket"><span class="ticket-title">Boleto 2: Mujeres en la Sombra</span><strong>Tema:</strong> Rosalind Franklin y el ADN.<br><strong>Misión:</strong> ¿Por qué no apareció en el Nobel?<br><strong>Uso IA:</strong> Entender la "Fotografía 51".</div>
+                        <div class="ticket"><span class="ticket-title">Boleto 3: Espionaje y Bits</span><strong>Tema:</strong> Alan Turing y Enigma.<br><strong>Misión:</strong> Lógica para ganar la guerra.<br><strong>Uso IA:</strong> Cómo funcionaba el código Enigma.</div>
+                        <div class="ticket"><span class="ticket-title">Boleto 4: Misterios del Espacio</span><strong>Tema:</strong> La Paradoja de Fermi.<br><strong>Misión:</strong> ¿Dónde están los alienígenas?<br><strong>Uso IA:</strong> Resumir las 3 teorías más famosas.</div>
+                        <div class="ticket"><span class="ticket-title">Boleto 5: Arqueología Dorada</span><strong>Tema:</strong> Tumba de Tutankamón.<br><strong>Misión:</strong> ¿Suerte o ciencia?<br><strong>Uso IA:</strong> Listar tesoros más importantes.</div>
+                        <div class="ticket"><span class="ticket-title">Boleto 6: Física Extrema</span><strong>Tema:</strong> Marie Curie.<br><strong>Misión:</strong> Dos Nobeles y sus riesgos.<br><strong>Uso IA:</strong> Radiación en medicina actual.</div>
+                        <div class="ticket"><span class="ticket-title">Boleto 7: El Mensaje Interestelar</span><strong>Tema:</strong> Disco de Oro Voyager.<br><strong>Misión:</strong> Sonidos y fotos para el espacio.<br><strong>Uso IA:</strong> Proponer 3 cosas nuevas para el disco.</div>
+                        <div class="ticket"><span class="ticket-title">Boleto 8: Desastres Biológicos</span><strong>Tema:</strong> La Peste Negra (1347).<br><strong>Misión:</strong> Cambio económico en Europa.<br><strong>Uso IA:</strong> Esquematizar rutas de contagio.</div>
+                        <div class="ticket"><span class="ticket-title">Boleto 9: Pioneros del Aire</span><strong>Tema:</strong> Wright vs. Dumont.<br><strong>Misión:</strong> ¿Quién voló realmente primero?<br><strong>Uso IA:</strong> Comparar los dos modelos de avión.</div>
+                        <div class="ticket"><span class="ticket-title">Boleto 10: Clima y Salvación</span><strong>Tema:</strong> Capa de Ozono.<br><strong>Misión:</strong> ¿Cómo cerramos el agujero?<br><strong>Uso IA:</strong> Explicar qué eran los CFCs.</div>
+                    </div>
+                </details>
+
+                <h3 class="section-title">4. Cierre: Reflexión del "Investigador alfa"</h3>
+                <div class="comp-box">
+                    <p><strong>Entrega:</strong> Reporte con portada, desarrollo de 3 puntos, las 3 preguntas verificadas y sección de fuentes.</p><br>
+                    <p><strong>Reflexión final:</strong> "¿Qué fue más difícil: que la IA te diera las preguntas o encontrar tú las respuestas?"</p><br>
+                    <p style="color: var(--terminal-green)"><strong>Conclusión:</strong> Se les reconoce como "Investigadores Alfa": aquellos que usan la tecnología para potenciar su cerebro, no para reemplazarlo.</p>
+                </div>
             `
         };
 
@@ -1177,10 +1245,10 @@
 
         // Generar resto de clases bloqueadas
         const gridT = document.getElementById('grid-theory');
-        for(let i=0; i<3; i++) {
+        for(let i=0; i<2; i++) {
             gridT.innerHTML += `
                 <div class="class-card" style="opacity:0.5">
-                    <span class="mono">CLASE ${(i+14).toString().padStart(2,'0')}</span>
+                    <span class="mono">CLASE ${(i+15).toString().padStart(2,'0')}</span>
                     <h3>Próximamente...</h3>
                     <button class="btn-action" style="background:var(--border); color:var(--text-muted); cursor:not-allowed">Bloqueado</button>
                 </div>`;
