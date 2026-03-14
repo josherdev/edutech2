@@ -68,6 +68,22 @@
             position: relative; overflow: hidden;
         }
         .class-card:hover { border-color: var(--main-accent); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
+		
+		.class-card1 {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 18px; padding: 30px; display: flex; flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; overflow: hidden;
+        }
+        .class-card1:hover { border-color: var(--boost-accent); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
+
+		.class-card2 {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 18px; padding: 30px; display: flex; flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; overflow: hidden;
+        }
+        .class-card2:hover { border-color: var(--terminal-green); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
 
         .btn-action {
             display: block; text-align: center; padding: 14px; border-radius: 12px;
@@ -249,13 +265,13 @@
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Diferencia entre la IA que cumple una sola función (Débil) y la IA que puede razonar (Fuerte).</p>
                     <button class="btn-action btn-main" onclick="showLesson(2)">Acceder</button>
                 </div>
-				        <div class="class-card">
-                    <span class="mono" style="color: var(--main-accent)">CLASE 03</span>
-                    <h3 style="margin: 10px 0;">Evaluación</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Aplicaciones prácticas y dinámicas de los contenidos vistos en las clases 1 y 2</p>
-                    <button class="btn-action btn-main" onclick="">Realizada</button>
+				<div class="class-card1">
+                    <span class="mono" style="color: var(--boost-accent)">CLASE 03</span>
+                    <h3 style="margin: 10px 0;">Prueba práctica final</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Aplicaciones prácticas y dinámicas de los contenidos vistos en las clases 1 y 2.</p>
+                    <button class="btn-action btn-main" style="background: var(--boost-accent);" onclick="showLesson(14)">Realizada</button>
                 </div>
-				        <div class="class-card">
+				<div class="class-card">
                     <span class="mono" style="color: var(--main-accent)">CLASE 04</span>
                     <h3 style="margin: 10px 0;">El detective de datos</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Comprende cómo las máquinas clasifican información con Machine Learning.</p>
@@ -315,11 +331,23 @@
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Pensamiento crítico e integridad académica contra las alucinaciones.</p>
                     <button class="btn-action btn-main" onclick="showLesson(13)">Acceder</button>
                 </div>
-				<div class="class-card" style="border-color: var(--boost-accent);">
+				<div class="class-card1">
                     <span class="mono" style="color: var(--boost-accent)">CLASE 14</span>
                     <h3 style="margin: 10px 0;">Prueba práctica final</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem;">Validación de triangulación de datos y fuentes primarias.</p>
                     <button class="btn-action btn-main" style="background: var(--boost-accent);" onclick="showLesson(14)">Iniciar reto</button>
+                </div>
+				<div class="class-card1">
+                    <span class="mono" style="color: var(--boost-accent)">CLASE 15</span>
+                    <h3 style="margin: 10px 0;">Examen integral final </h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Consolidación de la alfabetización en Inteligencia Artificial.</p>
+                    <button class="btn-action btn-main" style="background: var(--boost-accent);" onclick="showLesson(x)">Realizada</button>
+                </div>
+				<div class="class-card2">
+                    <span class="mono" style="color: var(--terminal-green)">CLASE 16</span>
+                    <h3 style="margin: 10px 0;">Redes Móviles (1G - 6G)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Exposiciones grupales sobre la evolución técnica.</p>
+                    <button class="btn-action btn-main" style="background: var(--terminal-green); color: #000;" onclick="showLesson(16)">Acceder</button>
                 </div>
             </div>
         </div>
@@ -1207,6 +1235,59 @@
                     <p><strong>Reflexión final:</strong> "¿Qué fue más difícil: que la IA te diera las preguntas o encontrar tú las respuestas?"</p><br>
                     <p style="color: var(--terminal-green)"><strong>Conclusión:</strong> Se les reconoce como "Investigadores Alfa": aquellos que usan la tecnología para potenciar su cerebro, no para reemplazarlo.</p>
                 </div>
+            `,
+			16: `
+                <div class="lesson-header">
+                    <p class="mono" style="color: var(--terminal-green)">MODULE_CONNECTIVITY_2026</p>
+                    <h2 style="font-size: 2.2rem; margin-top: 10px;">Clase 16: Evolución de las redes móviles 🛰️ (1G al 6G)</h2><br>
+                    <p><strong>Objetivo:</strong> Analizar la evolución técnica de las redes móviles desde sus cimientos analógicos hasta la hiperconectividad de la IA, vinculando cada salto generacional con los cambios estructurales en la comunicación humana y el desarrollo sociotecnológico global.</p>
+                </div>
+
+                <div class="comp-box" style="border-left: 5px solid var(--boost-accent);">
+                    <h3 class="section-title" style="margin-top: 0; color: var(--boost-accent);">EXPOSICIÓN GRUPAL</h3>
+                    <p><strong>Elementos considerados para la evaluación:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; color: var(--text-main);">
+                        <li>Tiempo por exposición: <strong>MIN:</strong> 15 minutos - <strong>MAX:</strong> 20 minutos</li>
+                        <li>Dominio temático: exposición correcta de todo el contenido.</li>
+                        <li>Relación social: Explicación correcta de tecnología con el mundo.</li>
+                        <li>Dominio comunicacional y calidad del recurso visual: Dominio del escenario, calidad del material visual y gestión del tiempo.</li>
+                        <li>Interactiva y dinámica: Uso de analogías y propuestas creativas.</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">Puntos a investigar y desarrollar sobre cada tema:</h3>
+                <div class="comp-box">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; text-align: center;" class="mono">
+                        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">Historia</div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">Concepto</div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">Creadores</div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">Características</div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">Ventajas / Desventajas</div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">Aporte</div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">Ejemplos</div>
+                    </div>
+                </div>
+
+                <h3 class="section-title">GRUPOS Y TEMAS</h3>
+                
+                
+                <div class="comp-box" style="border-top: 1px solid var(--main-accent);">
+                    <h4 style="color: var(--main-accent); margin-bottom: 10px;">📅 Martes 17/03/26: 1G y 2G</h4>
+                    <p><strong>Grupo 1:</strong> 1G – La era analógica</p>
+                    <p><strong>Grupo 2:</strong> 2G – La revolución digital y el SMS</p>
+                </div>
+
+                <div class="comp-box" style="border-top: 1px solid var(--main-accent);">
+                    <h4 style="color: var(--main-accent); margin-bottom: 10px;">📅 Martes 24/03/26: 3G y 4G</h4>
+                    <p><strong>Grupo 3:</strong> 3G – El internet móvil</p>
+                    <p><strong>Grupo 4:</strong> 4G LTE – La era del streaming</p>
+                </div>
+
+                <div class="comp-box" style="border-top: 1px solid var(--main-accent);">
+                    <h4 style="color: var(--main-accent); margin-bottom: 10px;">📅 Viernes 27/03/26: 5G y 6G</h4>
+                    <p><strong>Grupo 5:</strong> 5G – La hiperconectividad</p>
+                    <p><strong>Grupo 6:</strong> 6G – El futuro</p>
+                </div>
             `
         };
 
@@ -1245,10 +1326,10 @@
 
         // Generar resto de clases bloqueadas
         const gridT = document.getElementById('grid-theory');
-        for(let i=0; i<2; i++) {
+        for(let i=0; i<0; i++) {
             gridT.innerHTML += `
                 <div class="class-card" style="opacity:0.5">
-                    <span class="mono">CLASE ${(i+15).toString().padStart(2,'0')}</span>
+                    <span class="mono">CLASE ${(i+16).toString().padStart(2,'0')}</span>
                     <h3>Próximamente...</h3>
                     <button class="btn-action" style="background:var(--border); color:var(--text-muted); cursor:not-allowed">Bloqueado</button>
                 </div>`;
